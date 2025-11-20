@@ -66,8 +66,10 @@ export default function WhyClaireMatters() {
               </h3>
             </div>
             {/* Title - Desktop */}
-            <h3 className="hidden md:flex bg-clip-text bg-gradient-to-r flex flex-col font-['Saans_TRIAL',sans-serif] font-medium from-[#010101] justify-center w-full opacity-[0.97] relative shrink-0 text-[20px] to-[#3c3f2e] tracking-[-0.4px]" style={{ WebkitTextFillColor: "transparent" }}>
-              <p className="leading-[normal]">It Takes Hours to Find Definitive Coding Answers</p>
+            <h3 className="hidden md:flex bg-clip-text bg-gradient-to-r flex flex-col font-['Saans_TRIAL',sans-serif] from-[#010101] justify-center w-full opacity-[0.97] relative shrink-0 text-[20px] to-[#3c3f2e] tracking-[-0.4px]" style={{ WebkitTextFillColor: "transparent" }}>
+              <p className="leading-[normal]"
+            
+              >It Takes Hours to Find Definitive Coding Answers</p>
             </h3>
             <div className="font-['Saans_TRIAL',sans-serif] leading-[1.4] min-w-full not-italic relative shrink-0 text-[#6e6e6e] text-[0px] text-[14px] tracking-[-0.28px] md:tracking-[-0.32px] md:text-[16px] w-[min-content] whitespace-pre-wrap md:w-[530.807px] md:max-w-full">
               <p className="mb-[6px]">{`Coders and CDI professionals routinely dig through Coding Clinics, guidelines, pocket references, facility policies, and peer threads just to validate one diagnosis. Information is scattered, inconsistent, and slow to piece together. `}</p>

@@ -72,7 +72,7 @@ export default function Pricing() {
         </h2>
 
         {/* Pricing Cards */}
-        <div className="flex flex-col md:flex-row gap-[16px] md:gap-[20px] items-stretch relative w-full max-w-[1140px] z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-[16px] md:gap-[20px] items-stretch relative w-full max-w-[1140px] z-10">
           {plans.map((plan, index) => (
             <div 
               key={index} 
@@ -80,7 +80,7 @@ export default function Pricing() {
                 plan.featured 
                   ? 'bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] border-[rgba(255,255,255,0.7)]' 
                   : 'bg-white border-[rgba(60,63,46,0.1)]'
-              } backdrop-blur-[7px] backdrop-filter border border-solid box-border flex flex-[1_0_0] flex-col gap-[12px] items-start p-[8px] relative rounded-[20px] shrink-0 min-w-0`}
+              } backdrop-blur-[7px] backdrop-filter border border-solid box-border flex flex-col gap-[12px] items-start p-[8px] relative rounded-[20px] w-full min-w-0`}
             >
               {/* Top Section with Price */}
               <div className="box-border flex flex-col gap-[16px] md:gap-[20px] items-center p-[12px] md:p-[16px] relative shrink-0 w-full">

@@ -59,7 +59,7 @@ export default function TrustedByProfessionals() {
   ];
 
   return (
-    <div className="flex flex-col gap-[20px] md:gap-[30px] items-center relative w-full pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-[150px]">
+    <div className="flex flex-col gap-[20px] md:gap-[30px] items-center relative w-full pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-[150px] md:mt-[120px]">
       {/* Title */}
       <h2 className="bg-clip-text bg-gradient-to-r font-['CooperLtBT-Regular',sans-serif] from-[#010101] leading-[normal] relative shrink-0 text-[32px] md:text-[56px] text-center to-[#3c3f2e] tracking-[-0.64px] md:tracking-[-1.12px] z-[2]" style={{ WebkitTextFillColor: "transparent" }}>
         Trusted by Medical Coding Professionals

@@ -18,10 +18,10 @@ export default function WhatClaireDoes() {
       
       {/* Top Banner */}
       <div className="absolute bg-white border border-[#3c3f2e] border-solid box-border flex gap-[15px] items-center justify-center left-1/2 px-[16px] md:px-[25px] py-[8px] md:py-[12px] rounded-[40px] md:rounded-[81px] top-[-18px] md:top-[-22px] translate-x-[-50%] z-[4] max-w-[calc(100%-32px)] md:max-w-none w-auto">
-        <p className="font-['Saans_TRIAL',sans-serif] font-medium leading-[1.3] md:leading-[1.4] not-italic relative text-[#3c3f2e] text-[10px] md:text-[14px] text-center tracking-[-0.1px] md:tracking-[-0.14px] uppercase max-w-full">
+        <p className="font-['Saans_TRIAL',sans-serif] font-semibold leading-[1.3] md:leading-[1.4] not-italic relative text-[#3c3f2e] text-[10px] md:text-[14px] text-center tracking-[-0.1px] md:tracking-[-0.14px] uppercase max-w-full">
           Traditional tools give you codes. CLAIRE gives you confidence.
         </p>
-        <div className="absolute inset-0 pointer-events-none shadow-[inset_0px_-1px_2px_0px_rgba(0,0,0,0.2),inset_0px_-2px_1px_0px_#ffffff]" />
+        {/* <div className="absolute inset-0 pointer-events-none shadow-[inset_0px_-1px_2px_0px_rgba(0,0,0,0.2),inset_0px_-2px_1px_0px_#ffffff]" /> */}
       </div>
 
       {/* Title Section */}
@@ -125,12 +125,7 @@ export default function WhatClaireDoes() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute bg-gradient-to-b border-[0.977px] border-[rgba(60,63,46,0.1)] border-solid box-border flex from-[rgba(56,58,44,0)] gap-[11.728px] items-center left-1/2 opacity-70 p-[7.818px] rounded-bl-[10.137px] rounded-br-[10.137px] to-[rgba(56,58,44,0.6)] top-[44.2px] translate-x-[-50%] w-[297px]">
-                  <div className="bg-[rgba(255,255,255,0.2)] box-border flex gap-[5.864px] items-center justify-center px-[7.818px] py-[4.886px] relative rounded-[5.864px] shrink-0">
-                    <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[10.75px] text-white tracking-[-0.1075px] uppercase">ICD-10</p>
-                  </div>
-                  <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[13.486px] text-white tracking-[-0.2697px]">I48.0 - Paroxysmal</p>
-                </div>
+               
                 <div className="absolute bg-gradient-to-b border-[0.843px] border-[rgba(60,63,46,0.1)] border-solid box-border flex from-[rgba(56,58,44,0)] gap-[10.114px] items-center left-1/2 opacity-40 p-[6.742px] rounded-bl-[8.742px] rounded-br-[8.742px] to-[rgba(56,58,44,0.6)] top-[84.61px] translate-x-[-50%] w-[256.127px]">
                   <div className="bg-[rgba(255,255,255,0.2)] box-border flex gap-[5.057px] items-center justify-center px-[6.742px] py-[4.214px] relative rounded-[5.057px] shrink-0">
                     <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[9.271px] text-white tracking-[-0.0927px] uppercase">ICD-10</p>
