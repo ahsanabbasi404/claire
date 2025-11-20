@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function WhyClaireMatters() {
   return (
-    <div className="box-border flex flex-col isolate items-center pb-[43px] md:pb-[43px] pt-[40px] md:pt-[78px] px-4 md:px-0 relative w-full gap-[80px] md:gap-0 overflow-x-hidden">
+    <div className="box-border flex flex-col isolate items-center pb-[43px] md:pb-[43px] pt-[40px] md:pt-[78px] md:px-0 relative w-full gap-[80px] md:gap-0 overflow-x-hidden">
       {/* Title Section */}
       <div className="flex flex-col gap-[12px] md:gap-[12px] items-center not-italic relative shrink-0 text-center w-full z-[2] max-w-[358px] md:max-w-none">
         <h2 className="bg-clip-text bg-gradient-to-r font-['CooperLtBT-Regular',sans-serif] from-[#010101] leading-[normal] relative shrink-0 text-[32px] md:text-[56px] to-[#3c3f2e] tracking-[-0.64px] md:tracking-[-1.12px] w-full" style={{ WebkitTextFillColor: "transparent" }}>

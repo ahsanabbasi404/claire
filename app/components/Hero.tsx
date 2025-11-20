@@ -96,7 +96,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="box-border flex flex-col gap-[30px] md:gap-[60px] items-center pb-[60px] md:pb-[120px] pt-[30px] md:pt-[50px] px-4 md:px-6 lg:px-8 relative w-full overflow-x-hidden md:overflow-y-clip">
+    <div className="box-border flex flex-col gap-[30px] md:gap-[60px] items-center pb-[60px] md:pb-[120px] pt-[30px] md:pt-[50px] md:px-6 lg:px-8 relative w-full overflow-x-hidden md:overflow-y-clip">
       {/* Background Vector */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}

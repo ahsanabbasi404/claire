@@ -127,14 +127,14 @@ export default function HowYourTeamUses() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={containerVariants}
-            className="hidden md:flex md:flex-row md:flex-wrap md:items-start md:justify-center md:gap-0 relative w-full min-h-[334px] px-4 md:px-6 lg:px-8 xl:px-12"
+            className="hidden md:flex md:flex-row md:items-start md:justify-center md:gap-[24px] lg:gap-[32px] xl:gap-[40px] relative w-full min-h-[334px] px-4 md:px-8 lg:px-12"
           >
             {useCases.map((useCase, index) => (
               <motion.div
                 key={index}
                 custom={index}
                 variants={cardVariants}
-                className="flex-shrink-0 w-full md:w-[calc(50%-0px)] lg:w-[calc(33.333%-0px)] xl:w-[300px] 2xl:w-[300px]"
+                className="flex-shrink-0 w-[300px]"
                 style={{
                   transform: `translateY(${index === 0 ? '-9.38px' : index === 1 ? '3.99px' : index === 2 ? '-7.24px' : '11.47px'})`
                 }}
@@ -167,7 +167,7 @@ export default function HowYourTeamUses() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={containerVariants}
-            className="flex md:hidden flex-col gap-0 items-stretch justify-center w-full px-4"
+            className="flex md:hidden flex-col gap-4 items-stretch justify-center w-full px-4"
           >
             {useCases.map((useCase, index) => (
               <motion.div
