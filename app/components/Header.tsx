@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, px } from "framer-motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,12 +39,14 @@ export default function Header() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-      className={`fixed top-0 left-0 right-0 border-b border-l-0 border-neutral-100 border-r-0 border-solid border-t-0 box-border flex items-center justify-between px-[16px] md:px-[150px] py-[12px] w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-sm"
-          : "bg-white"
-      }`}
-    >
+      className={`fixed top-0 left-0 right-0 border-b border-l-0 border-neutral-100 border-r-0 border-solid border-t-0 box-border flex items-center justify-between px-[16px] md:px-[150px] py-[12px] w-full z-50 transition-all duration-300
+      `}
+      style={
+        {
+          background: 'white',
+        }
+      }
+      >
       {/* Logo Section */}
       <motion.div
         initial={{ x: -50, opacity: 0 }}
@@ -214,7 +216,7 @@ export default function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 lg:hidden bg-black/20 backdrop-blur-sm"
+              className="fixed inset-0 z-40 lg:hidden"
               onClick={closeMenu}
             />
 
@@ -224,8 +226,22 @@ export default function Header() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -100, opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="fixed top-[67px] left-0 right-0 backdrop-blur-md rounded-b-[16px] shadow-[0px_4px_12px_rgba(0,0,0,0.08)] z-50 lg:hidden border-t border-neutral-100/50 bg-white/95"
-            >
+              className="fixed top-[67px] left-2 right-2 rounded-b-[16px]  z-50 lg:hidden border-t border-white/20"
+            style={
+              {
+                borderRadius: '20px',
+                border: '1px solid rgba(60, 63, 46, 0.10)',
+                background: 'radial-gradient(94.61% 169.7% at 0% -25.89%, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.28) 100%), rgba(60, 63, 46, 0.10)',
+                backdropFilter: 'blur(17px)',
+                display: 'flex',
+width: '358px',
+padding: '12px 20px',
+flexDirection: 'column',
+justifyContent: 'center',
+alignItems: 'center',
+              }
+            }
+           >
               <nav className="flex flex-col gap-0 py-[8px] px-[16px]">
                 {navLinks.map((link, index) => (
                   <motion.a
@@ -239,8 +255,8 @@ export default function Header() {
                       delay: index * 0.05,
                       ease: [0.25, 0.1, 0.25, 1],
                     }}
-                    whileHover={{ x: 8, backgroundColor: "rgba(60,63,46,0.05)" }}
-                    className="flex items-center py-[16px] px-[12px] text-[#010101] font-['Saans_TRIAL',sans-serif] font-semibold text-[16px] tracking-[-0.32px] opacity-[0.97] border-b border-neutral-100/50 last:border-b-0 rounded-[8px] transition-colors"
+                    whileHover={{ x: 8, backgroundColor: "rgba(255,255,255,0.3)" }}
+                    className="flex items-center py-[16px] px-[12px] text-[#010101] font-['Saans_TRIAL',sans-serif] font-semibold text-[16px] tracking-[-0.32px] opacity-[0.97] border-b border-white/20 last:border-b-0 rounded-[8px] transition-colors"
                   >
                     {link.label}
                   </motion.a>
