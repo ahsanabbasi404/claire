@@ -8,6 +8,18 @@ export default function HowYourTeamUses() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
+  // Individual refs for mobile cards
+  const mobileCardRefs = [
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+  ];
+  
+  const mobileCardInView = mobileCardRefs.map((ref) =>
+    useInView(ref, { once: true, margin: "-50px" })
+  );
+
   const useCases = [
     {
       title: "Complex Case Resolution",
@@ -82,24 +94,33 @@ export default function HowYourTeamUses() {
     }),
   };
 
-  const mobileCardVariants = {
+  const mobileCardVariants = (rotate: number, delay: number = 0) => ({
     hidden: { 
       opacity: 0, 
       y: 30,
       scale: 0.95,
+      rotate: 0,
     },
-    visible: (index: number) => ({
+    visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      rotate: index === 0 ? -2 : index === 1 ? 3 : index === 2 ? -1.5 : 2,
+      rotate: rotate,
       transition: {
         duration: 0.6,
-        delay: index * 0.1,
+        delay: delay,
         ease: [0.16, 1, 0.3, 1] as const,
       },
-    }),
-  };
+    },
+  });
+
+  // Mobile card positions and rotations from Figma
+  const mobileCardPositions = [
+    { align: "left", top: "0.22px", rotate: 3.643 }, // Audit Preparation
+    { align: "right", top: "204.41px", rotate: 356.78 }, // Complex Case Resolution
+    { align: "left", top: "441.41px", rotate: 5.402 }, // CDI Query Generation
+    { align: "right", top: "657.48px", rotate: 357.632 }, // Production Speed Boost
+  ];
 
   return (
     <div className="relative w-full py-12 md:py-20 px-4 md:px-0">
@@ -127,7 +148,8 @@ export default function HowYourTeamUses() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={containerVariants}
-            className="hidden md:flex md:flex-row md:items-start md:justify-center md:gap-[24px] lg:gap-[32px] xl:gap-[40px] relative w-full min-h-[334px] px-4 md:px-8 lg:px-12"
+            // md:gap-[24px] lg:gap-[32px] xl:gap-[40px]
+            className="hidden md:flex md:flex-row md:items-start md:justify-center  relative w-full min-h-[334px] px-4 md:px-8 lg:px-12"
           >
             {useCases.map((useCase, index) => (
               <motion.div
@@ -163,39 +185,46 @@ export default function HowYourTeamUses() {
           </motion.div>
 
           {/* Mobile: Stacked cards with rotations */}
-          <motion.div
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={containerVariants}
-            className="flex md:hidden flex-col gap-4 items-stretch justify-center w-full px-4"
-          >
-            {useCases.map((useCase, index) => (
-              <motion.div
-                key={index}
-                custom={index}
-                variants={mobileCardVariants}
-                className="bg-white border border-[rgba(60,63,46,0.1)] border-solid box-border flex flex-col gap-[24px] items-start justify-center p-[12px] relative rounded-[20px] w-full"
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="box-border flex flex-col gap-[12px] items-start not-italic p-[12px] relative shrink-0 text-[#010101] w-full">
-                  <h3 className="font-['Saans_TRIAL',sans-serif] font-medium leading-[normal] opacity-[0.97] relative shrink-0 text-[18px] md:text-[20px] tracking-[-0.36px] md:tracking-[-0.4px] w-full">
-                    {useCase.title}
-                  </h3>
-                  <p className="font-['Saans_TRIAL',sans-serif] leading-[1.4] relative shrink-0 text-[14px] md:text-[16px] tracking-[-0.28px] md:tracking-[-0.32px] w-full md:h-[112px]">
-                    {useCase.description}
-                  </p>
-                </div>
-                <div className="bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex flex-col font-['Saans_TRIAL',sans-serif] font-medium gap-[4px] items-center justify-center not-italic p-[14px] relative rounded-[12px] shadow-[0px_61.74px_17.374px_0px_rgba(60,63,46,0),0px_39.402px_15.823px_0px_rgba(60,63,46,0.02),0px_22.338px_13.341px_0px_rgba(60,63,46,0.07),0px_9.928px_9.928px_0px_rgba(60,63,46,0.12),0px_2.482px_5.274px_0px_rgba(60,63,46,0.14)] shrink-0 text-white w-full">
-                  <p className="leading-[normal] relative shrink-0 text-[24px] md:text-[28px] tracking-[-0.48px] md:tracking-[-0.56px] w-full text-center">
-                    {useCase.stat}
-                  </p>
-                  <p className="leading-[1.4] opacity-40 relative shrink-0 text-[12px] md:text-[14px] tracking-[-0.12px] md:tracking-[-0.14px] uppercase w-full text-center">
-                    {useCase.subtext}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+          <div className="md:hidden relative w-full px-4">
+            {[
+              useCases[3], // Audit Preparation - first
+              useCases[0], // Complex Case Resolution - second
+              useCases[1], // CDI Query Generation - third
+              useCases[2], // Production Speed Boost - fourth
+            ].map((useCase, index) => {
+              const position = mobileCardPositions[index];
+              return (
+                <motion.div
+                  key={index}
+                  ref={mobileCardRefs[index]}
+                  variants={mobileCardVariants(position.rotate, 0)}
+                  initial="hidden"
+                  animate={mobileCardInView[index] ? "visible" : "hidden"}
+                  className="relative w-full -mb-2 last:mb-0  max-w-[267px]"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="bg-white border border-[rgba(60,63,46,0.1)] border-solid box-border flex flex-col gap-[16px] items-start justify-center p-[8px] relative rounded-[20px] w-full">
+                    <div className="box-border flex flex-col gap-[8px] items-start not-italic p-[8px] relative shrink-0 text-[#010101] w-full">
+                      <h3 className="font-['Saans_TRIAL',sans-serif] font-medium leading-[normal] opacity-[0.97] relative shrink-0 text-[18px] tracking-[-0.36px] w-full">
+                        {useCase.title}
+                      </h3>
+                      <p className="font-['Saans_TRIAL',sans-serif] leading-[1.4] relative shrink-0 text-[14px] tracking-[-0.28px] w-full">
+                        {useCase.description}
+                      </p>
+                    </div>
+                    <div className="bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex flex-col font-['Saans_TRIAL',sans-serif] font-medium gap-[4px] items-center justify-center not-italic p-[14px] relative rounded-[12px] shadow-[0px_61.74px_17.374px_0px_rgba(60,63,46,0),0px_39.402px_15.823px_0px_rgba(60,63,46,0.02),0px_22.338px_13.341px_0px_rgba(60,63,46,0.07),0px_9.928px_9.928px_0px_rgba(60,63,46,0.12),0px_2.482px_5.274px_0px_rgba(60,63,46,0.14)] shrink-0 text-white w-full">
+                      <p className="leading-[normal] relative shrink-0 text-[24px] tracking-[-0.48px] w-full text-center">
+                        {useCase.stat}
+                      </p>
+                      <p className="leading-[1.4] opacity-40 relative shrink-0 text-[14px] tracking-[-0.14px] uppercase w-full text-center">
+                        {useCase.subtext}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

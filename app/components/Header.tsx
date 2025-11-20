@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence, px } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -226,22 +226,21 @@ export default function Header() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -100, opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="fixed top-[67px] left-2 right-2 rounded-b-[16px]  z-50 lg:hidden border-t border-white/20"
-            style={
-              {
+              className="fixed top-[67px] left-1/2 -translate-x-1/2 rounded-b-[16px] z-50 lg:hidden border-t border-white/20"
+              style={{
                 borderRadius: '20px',
                 border: '1px solid rgba(60, 63, 46, 0.10)',
                 background: 'radial-gradient(94.61% 169.7% at 0% -25.89%, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.28) 100%), rgba(60, 63, 46, 0.10)',
                 backdropFilter: 'blur(17px)',
                 display: 'flex',
-width: '358px',
-padding: '12px 20px',
-flexDirection: 'column',
-justifyContent: 'center',
-alignItems: 'center',
-              }
-            }
-           >
+                width: '358px',
+                maxWidth: 'calc(100% - 32px)',
+                padding: '12px 20px',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
               <nav className="flex flex-col gap-0 py-[8px] px-[16px]">
                 {navLinks.map((link, index) => (
                   <motion.a
