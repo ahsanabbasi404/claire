@@ -1,13 +1,21 @@
+"use client";
+
 import Image from "next/image";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function HowYourTeamUses() {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
   const useCases = [
     {
       title: "Complex Case Resolution",
       description: "Resolve ambiguous documentation in minutes instead of hours. See the complete coding pathway and documentation needs without escalating to a supervisor.",
       stat: "Minutes",
       subtext: "Not hours",
-      rotate: "rotate-[-3.22deg]",
+      rotateDesktop: "rotate-[356.78deg]",
+      rotateMobile: "rotate-[-2deg]",
       left: "left-[129.43px]",
       top: "top-[-9.38px]"
     },
@@ -16,8 +24,9 @@ export default function HowYourTeamUses() {
       description: "Generate physician-ready queries instantly instead of drafting from scratch. Send queries today, not tomorrow.",
       stat: "Same Day",
       subtext: "QUERIES",
-      rotate: "rotate-[7.379deg]",
-      left: "left-[445.55px]",
+      rotateDesktop: "rotate-[7.379deg]",
+      rotateMobile: "rotate-[3deg]",
+      left: "left-[405.61px]",
       top: "top-[3.99px]"
     },
     {
@@ -25,7 +34,8 @@ export default function HowYourTeamUses() {
       description: "Reduce time-per-chart by surfacing the coding pathway, clinical indicators, and documentation needs instantly. Coders stay in flow instead of stopping to research.",
       stat: "+15% – 30%",
       subtext: "MORE PRODUCTIVITY",
-      rotate: "rotate-[-2.368deg]",
+      rotateDesktop: "rotate-[357.632deg]",
+      rotateMobile: "rotate-[-1.5deg]",
       left: "left-[711.57px]",
       top: "top-[-7.24px]"
     },
@@ -34,11 +44,62 @@ export default function HowYourTeamUses() {
       description: "Review high-risk cases and identify documentation gaps before RADV audits arrive. Walk into audits confident.",
       stat: "Ready",
       subtext: "For review",
-      rotate: "rotate-[3.643deg]",
-      left: "left-[1011.17px]",
+      rotateDesktop: "rotate-[3.643deg]",
+      rotateMobile: "rotate-[2deg]",
+      left: "left-[991.41px]",
       top: "top-[11.47px]"
     }
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      scale: 0.9,
+      rotate: 0,
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotate: index === 0 ? -3.22 : index === 1 ? 7.379 : index === 2 ? -2.368 : 3.643,
+      transition: {
+        duration: 0.8,
+        delay: index * 0.1,
+        ease: [0.16, 1, 0.3, 1] as const,
+      },
+    }),
+  };
+
+  const mobileCardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30,
+      scale: 0.95,
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotate: index === 0 ? -2 : index === 1 ? 3 : index === 2 ? -1.5 : 2,
+      transition: {
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.16, 1, 0.3, 1] as const,
+      },
+    }),
+  };
 
   return (
     <div className="relative w-full py-12 md:py-20 px-4 md:px-0">
@@ -60,10 +121,62 @@ export default function HowYourTeamUses() {
         </h2>
 
         {/* Use Case Cards */}
-        <div className="relative w-full max-w-[1440px] mx-auto pb-8 md:pb-0">
-          <div className="flex flex-col md:flex-row flex-wrap gap-4 md:gap-6 lg:gap-8 items-stretch justify-center w-full px-4 md:px-0">
+        <div ref={containerRef} className="relative w-full max-w-[1440px] mx-auto pb-8 md:pb-0">
+          {/* Desktop: Flex layout with rotations */}
+          <motion.div
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={containerVariants}
+            className="hidden md:flex md:flex-row md:flex-wrap md:items-start md:justify-center md:gap-0 relative w-full min-h-[334px] px-4 md:px-6 lg:px-8 xl:px-12"
+          >
             {useCases.map((useCase, index) => (
-              <div key={index} className={`bg-white border border-[rgba(60,63,46,0.1)] border-solid box-border flex flex-col gap-[24px] md:gap-[32px] items-start justify-center p-[12px] relative rounded-[20px] w-full md:w-[calc(50%-12px)] lg:w-[300px] ${index < 2 ? 'md:rotate-[-2deg]' : 'md:rotate-[2deg]'}`}>
+              <motion.div
+                key={index}
+                custom={index}
+                variants={cardVariants}
+                className="flex-shrink-0 w-full md:w-[calc(50%-0px)] lg:w-[calc(33.333%-0px)] xl:w-[300px] 2xl:w-[300px]"
+                style={{
+                  transform: `translateY(${index === 0 ? '-9.38px' : index === 1 ? '3.99px' : index === 2 ? '-7.24px' : '11.47px'})`
+                }}
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
+                <div className="bg-white border border-[rgba(60,63,46,0.1)] border-solid box-border flex flex-col gap-[32px] items-start justify-center p-[12px] relative rounded-[20px] w-full">
+                  <div className="box-border flex flex-col gap-[12px] items-start not-italic p-[12px] relative shrink-0 text-[#010101] w-full">
+                    <h3 className="font-['Saans_TRIAL',sans-serif] font-medium leading-[normal] opacity-[0.97] relative shrink-0 text-[20px] tracking-[-0.4px] w-full">
+                      {useCase.title}
+                    </h3>
+                    <p className="font-['Saans_TRIAL',sans-serif] leading-[1.4] relative shrink-0 text-[16px] tracking-[-0.32px] w-full h-[112px]">
+                      {useCase.description}
+                    </p>
+                  </div>
+                  <div className="bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex flex-col font-['Saans_TRIAL',sans-serif] font-medium gap-[4px] items-center justify-center not-italic p-[14px] relative rounded-[12px] shadow-[0px_61.74px_17.374px_0px_rgba(60,63,46,0),0px_39.402px_15.823px_0px_rgba(60,63,46,0.02),0px_22.338px_13.341px_0px_rgba(60,63,46,0.07),0px_9.928px_9.928px_0px_rgba(60,63,46,0.12),0px_2.482px_5.274px_0px_rgba(60,63,46,0.14)] shrink-0 text-white w-full">
+                    <p className="leading-[normal] relative shrink-0 text-[28px] tracking-[-0.56px] w-full text-center">
+                      {useCase.stat}
+                    </p>
+                    <p className="leading-[1.4] opacity-40 relative shrink-0 text-[14px] tracking-[-0.14px] uppercase w-full text-center">
+                      {useCase.subtext}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Mobile: Stacked cards with rotations */}
+          <motion.div
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={containerVariants}
+            className="flex md:hidden flex-col gap-0 items-stretch justify-center w-full px-4"
+          >
+            {useCases.map((useCase, index) => (
+              <motion.div
+                key={index}
+                custom={index}
+                variants={mobileCardVariants}
+                className="bg-white border border-[rgba(60,63,46,0.1)] border-solid box-border flex flex-col gap-[24px] items-start justify-center p-[12px] relative rounded-[20px] w-full"
+                whileHover={{ scale: 1.02 }}
+              >
                 <div className="box-border flex flex-col gap-[12px] items-start not-italic p-[12px] relative shrink-0 text-[#010101] w-full">
                   <h3 className="font-['Saans_TRIAL',sans-serif] font-medium leading-[normal] opacity-[0.97] relative shrink-0 text-[18px] md:text-[20px] tracking-[-0.36px] md:tracking-[-0.4px] w-full">
                     {useCase.title}
@@ -80,9 +193,9 @@ export default function HowYourTeamUses() {
                     {useCase.subtext}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

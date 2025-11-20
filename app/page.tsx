@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden w-full max-w-full">
       <Header />
-      <main className="w-full max-w-full overflow-x-hidden">
+      <main className="w-full max-w-full overflow-x-hidden pt-[62px] md:pt-[69px]">
         <Hero />
         <WhyClaireMatters />
         <WhatClaireDoes />
