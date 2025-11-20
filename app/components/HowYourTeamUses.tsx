@@ -142,7 +142,7 @@ export default function HowYourTeamUses() {
         </h2>
 
         {/* Use Case Cards */}
-        <div ref={containerRef} className="relative w-full max-w-[1440px] mx-auto pb-8 md:pb-0">
+        <div ref={containerRef} className="relative max-w-[1440px] mx-auto pb-8 md:pb-0">
           {/* Desktop: Flex layout with rotations */}
           <motion.div
             initial="hidden"
