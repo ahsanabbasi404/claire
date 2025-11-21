@@ -59,7 +59,7 @@ export default function TrustedByProfessionals() {
   ];
 
   return (
-    <div className="flex flex-col gap-[20px] md:gap-[30px] items-center relative w-full pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-[150px] md:mt-[120px]">
+    <div className="flex flex-col gap-[20px] md:gap-[30px] items-center relative w-full pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-[150px] isolate">
       {/* Title */}
       <h2 className="bg-clip-text bg-gradient-to-r font-['CooperLtBT-Regular',sans-serif] from-[#010101] leading-[normal] relative shrink-0 text-[32px] md:text-[56px] text-center to-[#3c3f2e] tracking-[-0.64px] md:tracking-[-1.12px] z-[2]" style={{ WebkitTextFillColor: "transparent" }}>
         Trusted by Medical Coding Professionals
@@ -67,13 +67,13 @@ export default function TrustedByProfessionals() {
 
       {/* Desktop View */}
       <div className="hidden md:flex flex-col items-center relative shrink-0 w-full max-w-[1140px] z-[1]">
-        {/* Testimonials Grid - Simple Flex Wrap */}
-        <div className="flex flex-row flex-wrap gap-[20px] items-start justify-center w-full mb-[-100px] pb-[120px]">
+        {/* Testimonials Grid - CSS Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch justify-items-center w-full mb-[-100px] pb-[120px] gap-6">
           {/* Flatten testimonials and render in grid */}
           {testimonials.flat().map((testimonial, index) => (
             <div 
               key={index} 
-              className="bg-white border border-[rgba(60,63,46,0.1)] border-solid box-border flex flex-col gap-[32px] items-start justify-center p-[24px] relative rounded-[20px] shrink-0 w-full md:w-[calc(33.333%-14px)] lg:w-[366.667px]"
+              className="bg-white border border-[rgba(60,63,46,0.1)] border-solid box-border flex flex-col gap-[32px] items-start justify-between p-[24px] relative rounded-[20px] shrink-0 w-full max-w-[366.667px] h-full"
             >
               <p className="font-['Saans_TRIAL',sans-serif] font-medium leading-[1.4] not-italic opacity-[0.97] relative shrink-0 text-[#010101] text-[22px] tracking-[-0.44px] w-full">
                 {testimonial.quote}
@@ -90,48 +90,93 @@ export default function TrustedByProfessionals() {
           ))}
         </div>
 
-        {/* Stats Section with Blur Effect - Overlapping testimonials */}
+        {/* Decorative Vector Container with Gradient Overlays */}
+        <div className="absolute h-[492.82px] left-1/2 translate-x-[-50%] bottom-[80px] w-[509.046px] pointer-events-none z-[5]">
+          {/* SVG Image */}
+          <Image
+            alt=""
+            className="block max-w-none w-full h-full"
+            height={492.82}
+            src="/reviews-vector-1.svg"
+            width={509.046}
+          />
+          
+          {/* Left side white gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent opacity-50" style={{ width: '30%', left: 0 }} />
+          
+          {/* Right side white gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-l from-white via-transparent to-transparent opacity-50" style={{ width: '30%', right: 0 }} />
+          
+          {/* Bottom gradient overlay - transparent to white */}
+          <div 
+            className="absolute inset-x-0 bottom-0 h-full pointer-events-none"
+            style={{
+              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 100%)',
+              borderBottom: '1px solid rgba(234, 101, 24, 0.00)'
+            }}
+          />
+        </div>
+
+        {/* Stats Section with Blur Effect */}
         <div className="flex h-[198px] items-center justify-center overflow-visible relative shrink-0 w-full max-w-[1141px] z-20">
           {/* Blurred Background Drop */}
-          <div className="absolute inset-0 backdrop-blur-sm bg-white/70 rounded-[20px] shadow-xl border border-[rgba(60,63,46,0.1)] z-0 overflow-hidden" />
-          
-          {/* Decorative Vector Behind Stats - Only top visible */}
-          <div className="absolute h-[492.82px] left-1/2 translate-x-[-50%] bottom-[50px] w-[509.046px] pointer-events-none z-[-1]">
-            <Image
-              alt=""
-              className="block max-w-none w-full h-full"
-              height={492.82}
-              src="/reviews-vector-1.svg"
-              width={509.046}
-            />
-          </div>
+          <div className="absolute inset-0 backdrop-blur-sm bg-white/70 rounded-[20px] shadow-xl border border-[rgba(60,63,46,0.1)] z-0" />
           
           {/* Stat 1 */}
-          <div className="flex flex-[1_0_0] flex-col font-['Saans_TRIAL',sans-serif] font-medium gap-[4px] items-center justify-center not-italic relative shrink-0 z-10">
-            <p className="bg-clip-text bg-gradient-to-b from-[#daa03f] leading-[normal] relative shrink-0 text-[64px] to-[#994f0c] tracking-[-1.28px] whitespace-nowrap" style={{ WebkitTextFillColor: "transparent" }}>
+          <div className="flex flex-[1_0_0] flex-col gap-[4px] items-center justify-center not-italic relative shrink-0 z-10">
+            <p 
+              className="leading-[normal] whitespace-nowrap" 
+              style={{ 
+                
+                fontSize: '64px',
+                fontWeight: '00',
+                letterSpacing: '-1.28px',
+                background: 'linear-gradient(180deg, #DAA03F 0%, #994F0C 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+                
+              }}
+            >
               50+
             </p>
-            <p className="leading-[1.4] opacity-40 relative shrink-0 text-[#010101] text-[14px] tracking-[-0.14px] uppercase">
+            <p className="font-['Saans_TRIAL',sans-serif] leading-[1.4] opacity-40 relative shrink-0 text-[#010101] text-[14px] tracking-[-0.14px] uppercase">
               Healthcare Facilities
             </p>
           </div>
 
           {/* Stat 2 */}
-          <div className="flex flex-[1_0_0] flex-col font-['Saans_TRIAL',sans-serif] font-medium gap-[4px] items-center justify-center not-italic relative shrink-0 z-10">
-            <p className="bg-clip-text bg-gradient-to-b from-[#daa03f] leading-[normal] relative shrink-0 text-[64px] to-[#994f0c] tracking-[-1.28px] whitespace-nowrap" style={{ WebkitTextFillColor: "transparent" }}>
+          <div className="flex flex-[1_0_0] flex-col gap-[4px] items-center justify-center not-italic relative shrink-0 z-10">
+            <p 
+              className="font-['Saans_TRIAL',sans-serif] font-medium leading-[normal] relative shrink-0 text-[64px] tracking-[-1.28px] whitespace-nowrap" 
+              style={{ 
+                background: 'linear-gradient(180deg, #DAA03F 0%, #994F0C 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}
+            >
               10,000+
             </p>
-            <p className="leading-[1.4] opacity-40 relative shrink-0 text-[#010101] text-[14px] tracking-[-0.14px] uppercase">
+            <p className="font-['Saans_TRIAL',sans-serif] leading-[1.4] opacity-40 relative shrink-0 text-[#010101] text-[14px] tracking-[-0.14px] uppercase">
               Codes Explained Daily
             </p>
           </div>
 
           {/* Stat 3 */}
-          <div className="flex flex-[1_0_0] flex-col font-['Saans_TRIAL',sans-serif] font-medium gap-[4px] items-center justify-center not-italic relative shrink-0 z-10">
-            <p className="bg-clip-text bg-gradient-to-b from-[#daa03f] leading-[normal] relative shrink-0 text-[64px] to-[#994f0c] tracking-[-1.28px] whitespace-nowrap" style={{ WebkitTextFillColor: "transparent" }}>
+          <div className="flex flex-[1_0_0] flex-col gap-[4px] items-center justify-center not-italic relative shrink-0 z-10">
+            <p 
+              className="font-['Saans_TRIAL',sans-serif] font-medium leading-[normal] relative shrink-0 text-[64px] tracking-[-1.28px] whitespace-nowrap" 
+              style={{ 
+                background: 'linear-gradient(180deg, #DAA03F 0%, #994F0C 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}
+            >
               4.9/5
             </p>
-            <p className="leading-[1.4] opacity-40 relative shrink-0 text-[#010101] text-[14px] tracking-[-0.14px] uppercase">
+            <p className="font-['Saans_TRIAL',sans-serif] leading-[1.4] opacity-40 relative shrink-0 text-[#010101] text-[14px] tracking-[-0.14px] uppercase">
               Average Rating
             </p>
           </div>
@@ -140,8 +185,8 @@ export default function TrustedByProfessionals() {
 
       {/* Mobile View */}
       <div className="md:hidden flex flex-col gap-4 w-full">
-        {/* All Testimonials */}
-        {testimonials.flat().map((testimonial, index) => (
+        {/* Only First 3 Testimonials on Mobile */}
+        {testimonials.flat().slice(0, 3).map((testimonial, index) => (
           <div 
             key={index} 
             className="bg-white border border-[rgba(60,63,46,0.1)] border-solid box-border flex flex-col gap-[24px] items-start justify-center p-[20px] relative rounded-[16px] shrink-0 w-full"
@@ -176,26 +221,50 @@ export default function TrustedByProfessionals() {
         {/* Mobile Stats */}
         <div className="flex flex-col gap-8 items-center justify-center w-full mt-4">
           <div className="flex flex-col gap-[4px] items-center justify-center">
-            <p className="bg-clip-text bg-gradient-to-b from-[#daa03f] leading-[normal] relative shrink-0 text-[48px] to-[#994f0c] tracking-[-0.96px]" style={{ WebkitTextFillColor: "transparent" }}>
+            <p 
+              className="font-['Saans_TRIAL',sans-serif] font-medium leading-[normal] relative shrink-0 text-[48px] tracking-[-0.96px]"
+              style={{ 
+                background: 'linear-gradient(180deg, #DAA03F 0%, #994F0C 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}
+            >
               50+
             </p>
-            <p className="leading-[1.4] opacity-40 relative shrink-0 text-[#010101] text-[12px] tracking-[-0.12px] uppercase">
+            <p className="font-['Saans_TRIAL',sans-serif] leading-[1.4] opacity-40 relative shrink-0 text-[#010101] text-[12px] tracking-[-0.12px] uppercase">
               Healthcare Facilities
             </p>
           </div>
           <div className="flex flex-col gap-[4px] items-center justify-center">
-            <p className="bg-clip-text bg-gradient-to-b from-[#daa03f] leading-[normal] relative shrink-0 text-[48px] to-[#994f0c] tracking-[-0.96px]" style={{ WebkitTextFillColor: "transparent" }}>
+            <p 
+              className="font-['Saans_TRIAL',sans-serif] font-medium leading-[normal] relative shrink-0 text-[48px] tracking-[-0.96px]"
+              style={{ 
+                background: 'linear-gradient(180deg, #DAA03F 0%, #994F0C 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}
+            >
               10,000+
             </p>
-            <p className="leading-[1.4] opacity-40 relative shrink-0 text-[#010101] text-[12px] tracking-[-0.12px] uppercase">
+            <p className="font-['Saans_TRIAL',sans-serif] leading-[1.4] opacity-40 relative shrink-0 text-[#010101] text-[12px] tracking-[-0.12px] uppercase">
               Codes Explained Daily
             </p>
           </div>
           <div className="flex flex-col gap-[4px] items-center justify-center">
-            <p className="bg-clip-text bg-gradient-to-b from-[#daa03f] leading-[normal] relative shrink-0 text-[48px] to-[#994f0c] tracking-[-0.96px]" style={{ WebkitTextFillColor: "transparent" }}>
+            <p 
+              className="font-['Saans_TRIAL',sans-serif] font-medium leading-[normal] relative shrink-0 text-[48px] tracking-[-0.96px]"
+              style={{ 
+                background: 'linear-gradient(180deg, #DAA03F 0%, #994F0C 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}
+            >
               4.9/5
             </p>
-            <p className="leading-[1.4] opacity-40 relative shrink-0 text-[#010101] text-[12px] tracking-[-0.12px] uppercase">
+            <p className="font-['Saans_TRIAL',sans-serif] leading-[1.4] opacity-40 relative shrink-0 text-[#010101] text-[12px] tracking-[-0.12px] uppercase">
               Average Rating
             </p>
           </div>

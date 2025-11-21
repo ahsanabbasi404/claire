@@ -1,17 +1,60 @@
+"use client";
+
 import Image from "next/image";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function WhyClaireMatters() {
+  const titleRef = useRef(null);
+  
+  // Individual refs for each card
+  const card1Ref = useRef(null);
+  const card2Ref = useRef(null);
+  const card3Ref = useRef(null);
+  const card4Ref = useRef(null);
+  const card5Ref = useRef(null);
+  
+  // Individual refs for each icon
+  const icon1Ref = useRef(null);
+  const icon2Ref = useRef(null);
+  const icon3Ref = useRef(null);
+  const icon4Ref = useRef(null);
+  const icon5Ref = useRef(null);
+  
+  const titleInView = useInView(titleRef, { once: true, margin: "-100px" });
+  
+  // Individual inView states for each card
+  const card1InView = useInView(card1Ref, { once: true, margin: "-100px" });
+  const card2InView = useInView(card2Ref, { once: true, margin: "-100px" });
+  const card3InView = useInView(card3Ref, { once: true, margin: "-100px" });
+  const card4InView = useInView(card4Ref, { once: true, margin: "-100px" });
+  const card5InView = useInView(card5Ref, { once: true, margin: "-100px" });
+  
+  // Individual inView states for each icon
+  const icon1InView = useInView(icon1Ref, { once: true, margin: "-100px" });
+  const icon2InView = useInView(icon2Ref, { once: true, margin: "-100px" });
+  const icon3InView = useInView(icon3Ref, { once: true, margin: "-100px" });
+  const icon4InView = useInView(icon4Ref, { once: true, margin: "-100px" });
+  const icon5InView = useInView(icon5Ref, { once: true, margin: "-100px" });
+
   return (
     <div className="box-border flex flex-col isolate items-center pb-[43px] md:pb-[43px] pt-[40px] md:pt-[78px] md:px-0 relative w-full gap-[80px] md:gap-0 overflow-x-hidden">
       {/* Title Section */}
-      <div className="flex flex-col gap-[12px] md:gap-[12px] items-center not-italic relative shrink-0 text-center w-full z-[2] max-w-[358px] md:max-w-none">
+      <motion.div
+        ref={titleRef}
+        initial={{ opacity: 0, y: 20 }}
+        animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="flex flex-col gap-[12px] md:gap-[12px] items-center not-italic relative shrink-0 text-center w-full z-[2] max-w-[358px] md:max-w-none"
+        style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+      >
         <h2 className="bg-clip-text bg-gradient-to-r font-['CooperLtBT-Regular',sans-serif] from-[#010101] leading-[normal] relative shrink-0 text-[32px] md:text-[56px] to-[#3c3f2e] tracking-[-0.64px] md:tracking-[-1.12px] w-full" style={{ WebkitTextFillColor: "transparent" }}>
           Why CLAIRE Matters
         </h2>
         <p className="font-['Saans_TRIAL',sans-serif] leading-[1.4] relative shrink-0 text-[#6e6e6e] text-[16px] md:text-[16px] tracking-[-0.32px] md:tracking-[-0.32px] w-full whitespace-pre-wrap">
           The daily struggles every medical coder knows too well
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Content Container */}
       <div className="relative md:h-[1293px] mb-[-43px] md:mb-[-43px] rounded-[32px] shrink-0 w-full max-w-[1440px] mx-auto z-[1] px-4 md:px-0 overflow-hidden">
@@ -55,7 +98,14 @@ export default function WhyClaireMatters() {
           </div>
 
           {/* Challenge 1: Left Icon on Mobile, Right Aligned on Desktop */}
-          <div className="flex flex-col gap-[16px] md:gap-[24px] items-end md:items-end justify-center leading-[0] not-italic pl-[56px] pr-0 md:px-[20px] py-0 md:py-[24px] relative shrink-0 text-left md:text-right w-full md:absolute md:left-0 md:top-0 md:w-[646.574px] max-w-full rounded-[20px]">
+          <motion.div
+            ref={card1Ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={card1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="flex flex-col gap-[16px] md:gap-[24px] items-end md:items-end justify-center leading-[0] not-italic pl-[56px] pr-0 md:px-[20px] py-0 md:py-[24px] relative shrink-0 text-left md:text-right w-full md:absolute md:left-0 md:top-0 md:w-[646.574px] max-w-full rounded-[20px]"
+            style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+          >
             {/* Icon + Title Row - Mobile */}
             <div className="flex md:hidden gap-[16px] items-center relative shrink-0 w-[358px] z-[3]">
               <div className="bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] flex items-center justify-center p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] shrink-0 relative z-[3]">
@@ -75,10 +125,17 @@ export default function WhyClaireMatters() {
               <p className="mb-[6px]">{`Coders and CDI professionals routinely dig through Coding Clinics, guidelines, pocket references, facility policies, and peer threads just to validate one diagnosis. Information is scattered, inconsistent, and slow to piece together. `}</p>
               <p className="font-['Saans_TRIAL',sans-serif] font-medium text-[#3c3f2e]">{`CLAIRE brings all of that to your fingertips — instantly. `}</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Challenge 2: Right Icon on Mobile, Left Aligned on Desktop */}
-          <div className="flex flex-col gap-[16px] md:gap-[24px] items-start justify-end leading-[0] not-italic pl-0 pr-[56px] md:px-[20px] py-0 md:py-[24px] relative shrink-0 w-full md:absolute md:left-[493.426px] md:top-[199px] md:w-[646.574px] max-w-full rounded-[20px]">
+          <motion.div
+            ref={card2Ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={card2InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="flex flex-col gap-[16px] md:gap-[24px] items-start justify-end leading-[0] not-italic pl-0 pr-[56px] md:px-[20px] py-0 md:py-[24px] relative shrink-0 w-full md:absolute md:left-[493.426px] md:top-[199px] md:w-[646.574px] max-w-full rounded-[20px]"
+            style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+          >
             {/* Icon + Title Row - Mobile */}
             <div className="flex md:hidden gap-[16px] items-center justify-end relative shrink-0 w-[358px] z-[3]">
               <h3 className="bg-clip-text bg-gradient-to-r flex flex-col font-['Saans_TRIAL',sans-serif] font-medium from-[#010101] justify-center opacity-[0.97] relative shrink-0 text-[18px] text-right to-[#3c3f2e] tracking-[-0.36px] w-[186.301px]" style={{ WebkitTextFillColor: "transparent" }}>
@@ -96,10 +153,17 @@ export default function WhyClaireMatters() {
               <p className="mb-[6px]">{`Providers document clinically — not in coding language. This means coders spend time interpreting severity, linking conditions, and deciding whether clarification is needed. `}</p>
               <p className="font-['Saans_TRIAL',sans-serif] font-medium text-[#3c3f2e]">{`CLAIRE explains the clinical indicators and the coding pathway in a way that is easily understood. `}</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Challenge 3: Left Icon on Mobile, Right Aligned on Desktop */}
-          <div className="flex flex-col gap-[16px] md:gap-[24px] items-end md:items-end justify-center leading-[0] not-italic pl-[56px] pr-0 md:px-[20px] py-0 md:py-[24px] relative shrink-0 text-left md:text-right w-full md:absolute md:left-0 md:top-[420px] md:w-[646.574px] max-w-full rounded-[20px]">
+          <motion.div
+            ref={card3Ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={card3InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="flex flex-col gap-[16px] md:gap-[24px] items-end md:items-end justify-center leading-[0] not-italic pl-[56px] pr-0 md:px-[20px] py-0 md:py-[24px] relative shrink-0 text-left md:text-right w-full md:absolute md:left-0 md:top-[420px] md:w-[646.574px] max-w-full rounded-[20px]"
+            style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+          >
             {/* Icon + Title Row - Mobile */}
             <div className="flex md:hidden gap-[16px] items-center relative shrink-0 w-[358px] z-[3]">
               <div className="bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] flex items-center justify-center p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] shrink-0 relative z-[3]">
@@ -117,10 +181,17 @@ export default function WhyClaireMatters() {
               <p className="mb-[6px]">{`When coders and CDS get stuck, they ask other SMEs — Teams chats, Slack, Facebook groups, Reddit, listservs. But waiting for someone to answer can stall coding for hours or days. `}</p>
               <p className="font-['Saans_TRIAL',sans-serif] font-medium text-[#3c3f2e]">{`CLAIRE gives expert-level clarification immediately — no waiting, no group chat fishing.`}</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Challenge 4: Right Icon on Mobile, Left Aligned on Desktop */}
-          <div className="flex flex-col gap-[16px] md:gap-[24px] items-start justify-end leading-[0] not-italic pl-0 pr-[56px] md:px-[20px] py-0 md:py-[24px] relative shrink-0 w-full md:absolute md:left-[493.426px] md:top-[641px] md:w-[646.574px] max-w-full rounded-[20px]">
+          <motion.div
+            ref={card4Ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={card4InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="flex flex-col gap-[16px] md:gap-[24px] items-start justify-end leading-[0] not-italic pl-0 pr-[56px] md:px-[20px] py-0 md:py-[24px] relative shrink-0 w-full md:absolute md:left-[493.426px] md:top-[641px] md:w-[646.574px] max-w-full rounded-[20px]"
+            style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+          >
             {/* Icon + Title Row - Mobile */}
             <div className="flex md:hidden gap-[16px] items-center justify-end relative shrink-0 w-[358px] z-[3]">
               <h3 className="bg-clip-text bg-gradient-to-r flex flex-col font-['Saans_TRIAL',sans-serif] font-medium from-[#010101] justify-center opacity-[0.97] relative shrink-0 text-[18px] text-right to-[#3c3f2e] tracking-[-0.36px] w-[220.071px]" style={{ WebkitTextFillColor: "transparent" }}>
@@ -138,10 +209,17 @@ export default function WhyClaireMatters() {
               <p className="mb-[6px]">{`Query compliance is complex. Coders and CDS worry about leading language, insufficient indicators, or missing the need to query altogether. `}</p>
               <p className="font-['Saans_TRIAL',sans-serif] font-medium text-[#3c3f2e]">{`CLAIRE identifies when a query is needed and provides compliant, clinically supported reasoning. `}</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Challenge 5: Left Icon on Mobile, Right Aligned on Desktop */}
-          <div className="flex flex-col gap-[16px] md:gap-[24px] items-end md:items-end justify-center leading-[0] not-italic pl-[56px] pr-0 md:px-[20px] py-0 md:py-[24px] relative shrink-0 text-left md:text-right w-full md:absolute md:left-0 md:top-[840px] md:w-[646.574px] max-w-full rounded-[20px]">
+          <motion.div
+            ref={card5Ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={card5InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="flex flex-col gap-[16px] md:gap-[24px] items-end md:items-end justify-center leading-[0] not-italic pl-[56px] pr-0 md:px-[20px] py-0 md:py-[24px] relative shrink-0 text-left md:text-right w-full md:absolute md:left-0 md:top-[840px] md:w-[646.574px] max-w-full rounded-[20px]"
+            style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+          >
             {/* Icon + Title Row - Mobile */}
             <div className="flex md:hidden gap-[16px] items-center relative shrink-0 w-[358px] z-[3]">
               <div className="bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] flex items-center justify-center p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] shrink-0 relative z-[3]">
@@ -159,14 +237,21 @@ export default function WhyClaireMatters() {
               <p className="mb-[6px]">{`A code is never "just a code." It affects DRGs, SOI/ROM, HCCs, risk scores, RAF, quality scores, and reimbursement. `}</p>
               <p className="font-['Saans_TRIAL',sans-serif] font-medium text-[#3c3f2e]">{`CLAIRE shows how conditions connect — the severity story, the financial impact, and the clinical rationale. `}</p>
             </div>
-          </div>
+          </motion.div>
         </div>
 
       
 
         {/* Icons positioned along the central line - Hidden on Mobile */}
         {/* Icon 1: Clock - Right side, aligned with first card */}
-        <div className="hidden md:flex absolute bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex-col gap-[10px] items-center justify-center left-1/2 translate-x-[75.9px] p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] top-[176.5px] z-[3]">
+        <motion.div
+          ref={icon1Ref}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={icon1InView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="hidden md:flex absolute bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex-col gap-[10px] items-center justify-center left-1/2 translate-x-[75.9px] p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] top-[176.5px] z-[3]"
+          style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+        >
           <div className="overflow-clip relative shrink-0 size-[24px]">
             <Image
               alt="Clock Icon"
@@ -176,10 +261,17 @@ export default function WhyClaireMatters() {
               width={24}
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* Icon 2: Files - Left side, aligned with second card */}
-        <div className="hidden md:flex absolute bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex-col gap-[10px] items-center justify-center left-1/2 translate-x-[-113.76px] p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] to-[#3c3f2e] top-[375.5px] z-[3]">
+        <motion.div
+          ref={icon2Ref}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={icon2InView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="hidden md:flex absolute bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex-col gap-[10px] items-center justify-center left-1/2 translate-x-[-113.76px] p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] to-[#3c3f2e] top-[375.5px] z-[3]"
+          style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+        >
           <div className="overflow-clip relative shrink-0 size-[24px]">
             <Image
               alt="Files Icon"
@@ -189,10 +281,17 @@ export default function WhyClaireMatters() {
               width={24}
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* Icon 3: Users - Right side, aligned with third card */}
-        <div className="hidden md:flex absolute bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex-col gap-[10px] items-center justify-center left-1/2 translate-x-[75.9px] p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] to-[#3c3f2e] top-[596.5px] z-[3]">
+        <motion.div
+          ref={icon3Ref}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={icon3InView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="hidden md:flex absolute bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex-col gap-[10px] items-center justify-center left-1/2 translate-x-[75.9px] p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] to-[#3c3f2e] top-[596.5px] z-[3]"
+          style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+        >
           <div className="overflow-clip relative shrink-0 size-[24px]">
             <Image
               alt="Users Icon"
@@ -202,10 +301,17 @@ export default function WhyClaireMatters() {
               width={24}
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* Icon 4: Question - Left side, aligned with fourth card */}
-        <div className="hidden md:flex absolute bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex-col gap-[10px] items-center justify-center left-1/2 translate-x-[-113.76px] p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] to-[#3c3f2e] top-[817.5px] z-[3]">
+        <motion.div
+          ref={icon4Ref}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={icon4InView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="hidden md:flex absolute bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex-col gap-[10px] items-center justify-center left-1/2 translate-x-[-113.76px] p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] to-[#3c3f2e] top-[817.5px] z-[3]"
+          style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+        >
           <div className="overflow-clip relative shrink-0 size-[24px]">
             <Image
               alt="Question Icon"
@@ -215,10 +321,17 @@ export default function WhyClaireMatters() {
               width={24}
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* Icon 5: Git Pull - Right side, aligned with fifth card */}
-        <div className="hidden md:flex absolute bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex-col gap-[10px] items-center justify-center left-1/2 translate-x-[75.9px] p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] to-[#3c3f2e] top-[1016.5px] z-[3]">
+        <motion.div
+          ref={icon5Ref}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={icon5InView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="hidden md:flex absolute bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex-col gap-[10px] items-center justify-center left-1/2 translate-x-[75.9px] p-[10px] rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] size-[40px] to-[#3c3f2e] top-[1016.5px] z-[3]"
+          style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+        >
           <div className="overflow-clip relative shrink-0 size-[24px]">
             <Image
               alt="Git Pull Icon"
@@ -228,7 +341,7 @@ export default function WhyClaireMatters() {
               width={24}
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

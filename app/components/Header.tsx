@@ -36,31 +36,27 @@ export default function Header() {
 
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={`fixed top-0 left-0 right-0 border-b border-l-0 border-neutral-100 border-r-0 border-solid border-t-0 box-border flex items-center justify-between px-[16px] md:px-[150px] py-[12px] w-full z-50 transition-all duration-300
       `}
-      style={
-        {
-          background: 'white',
-        }
-      }
+      style={{
+        background: 'white',
+        willChange: 'opacity, transform',
+        transform: 'translateZ(0)',
+      }}
       >
       {/* Logo Section */}
       <motion.div
-        initial={{ x: -50, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
         whileHover={{ scale: 1.05 }}
+        style={{ willChange: 'transform', transform: 'translateZ(0)' }}
         className="box-border flex gap-[6px] md:gap-[8.236px] items-center overflow-clip p-[0.824px] relative shrink-0 cursor-pointer"
       >
-        <motion.div
-          initial={{ rotate: -180, opacity: 0 }}
-          animate={{ rotate: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-          className="relative shrink-0 w-[38px] h-[38px] md:w-[45.296px] md:h-[45.296px]"
-        >
+        <div className="relative shrink-0 w-[38px] h-[38px] md:w-[45.296px] md:h-[45.296px]">
           <Image
             alt="Claire Logo Icon"
             className="block max-w-none w-full h-full"
@@ -69,13 +65,8 @@ export default function Header() {
             width={45.296}
             priority
           />
-        </motion.div>
-        <motion.div
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-          className="h-[29px] md:h-[34.59px] relative shrink-0 w-[100px] md:w-[117.821px]"
-        >
+        </div>
+        <div className="h-[29px] md:h-[34.59px] relative shrink-0 w-[100px] md:w-[117.821px]">
           <Image
             alt="Claire Logo Text"
             className="block max-w-none w-full h-full"
@@ -84,7 +75,7 @@ export default function Header() {
             width={117.821}
             priority
           />
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* Navigation Links - Hidden on Mobile */}
@@ -93,14 +84,15 @@ export default function Header() {
           <motion.a
             key={link.href}
             href={link.href}
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.5,
-              delay: 0.5 + index * 0.1,
-              ease: [0.25, 0.1, 0.25, 1],
+              duration: 0.6,
+              delay: 0.7 + index * 0.08,
+              ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            whileHover={{ y: -2, opacity: 1 }}
+            whileHover={{ y: -2 }}
+            style={{ willChange: 'transform', transform: 'translateZ(0)' }}
             className="flex flex-col justify-center opacity-[0.97] relative shrink-0 leading-normal group font-bold"
           >
             <p className="leading-[normal] relative">
@@ -108,7 +100,8 @@ export default function Header() {
               <motion.span
                 className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#3c3f2e]"
                 whileHover={{ width: "100%" }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                style={{ willChange: 'width' }}
               />
             </p>
           </motion.a>
@@ -117,24 +110,29 @@ export default function Header() {
 
       {/* Action Buttons - Desktop */}
       <motion.div
-        initial={{ x: 50, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="hidden lg:flex bg-[rgba(60,63,46,0.1)] items-start relative rounded-[12px] shrink-0 overflow-hidden"
+        style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
       >
         <motion.button
           whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="box-border flex flex-col gap-[5.319px] items-center justify-center overflow-clip px-[20px] py-[12px] relative self-stretch shrink-0 bg-transparent border-none cursor-pointer"
+          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
         >
           <span className="flex flex-col font-['Saans_TRIAL',sans-serif] font-semibold justify-center leading-[0] not-italic opacity-[0.97] relative shrink-0 text-[#3c3f2e] text-[16px] text-center tracking-[-0.32px] whitespace-nowrap">
             <p className="leading-[normal]">Login</p>
           </span>
         </motion.button>
         <motion.button
-          whileHover={{ scale: 1.05, boxShadow: "0px 8px 20px rgba(60,63,46,0.2)" }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex flex-col gap-[7.978px] items-center justify-center overflow-clip px-[20px] py-[12px] relative rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] shrink-0 border-none cursor-pointer"
+          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
         >
           <span className="flex flex-col font-['Saans_TRIAL',sans-serif] font-semibold justify-center leading-[0] not-italic opacity-[0.97] relative shrink-0 text-[16px] text-center text-white tracking-[-0.32px] whitespace-nowrap">
             <p className="leading-[normal]">Sign up</p>
@@ -144,16 +142,19 @@ export default function Header() {
 
       {/* Mobile: Sign up Button + Hamburger Menu */}
       <motion.div
-        initial={{ x: 50, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="flex lg:hidden items-center gap-[12px] relative shrink-0"
+        style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
       >
         {/* Sign up Button - Mobile */}
         <motion.button
           whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex flex-col gap-[7.978px] items-center justify-center overflow-clip px-[16px] py-[10px] relative rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] shrink-0 border-none cursor-pointer"
+          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
         >
           <span className="flex flex-col font-['Saans_TRIAL',sans-serif] font-semibold justify-center leading-[0] not-italic opacity-[0.97] relative shrink-0 text-[14px] text-center text-white tracking-[-0.28px] whitespace-nowrap">
             <p className="leading-[normal]">Sign up</p>
@@ -164,9 +165,11 @@ export default function Header() {
         <motion.button
           onClick={toggleMenu}
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="flex flex-col items-center justify-center gap-[6px] w-[28px] h-[28px] relative shrink-0 cursor-pointer border-none bg-transparent p-0"
           aria-label="Toggle menu"
+          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
         >
           <motion.span
             className="w-full h-[2px] bg-[#3c3f2e] rounded-full"
@@ -181,12 +184,14 @@ export default function Header() {
                     y: 0,
                   }
             }
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            style={{ willChange: 'transform', transform: 'translateZ(0)' }}
           />
           <motion.span
             className="w-full h-[2px] bg-[#3c3f2e] rounded-full"
             animate={isMenuOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.15 }}
+            style={{ willChange: 'opacity, transform' }}
           />
           <motion.span
             className="w-full h-[2px] bg-[#3c3f2e] rounded-full"
@@ -201,7 +206,8 @@ export default function Header() {
                     y: 0,
                   }
             }
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            style={{ willChange: 'transform', transform: 'translateZ(0)' }}
           />
         </motion.button>
       </motion.div>
@@ -252,10 +258,11 @@ export default function Header() {
                     transition={{
                       duration: 0.3,
                       delay: index * 0.05,
-                      ease: [0.25, 0.1, 0.25, 1],
+                      ease: [0.16, 1, 0.3, 1],
                     }}
-                    whileHover={{ x: 8, backgroundColor: "rgba(255,255,255,0.3)" }}
-                    className="flex items-center py-[16px] px-[12px] text-[#010101] font-['Saans_TRIAL',sans-serif] font-semibold text-[16px] tracking-[-0.32px] opacity-[0.97] border-b border-white/20 last:border-b-0 rounded-[8px] transition-colors"
+                    whileHover={{ x: 8 }}
+                    className="flex items-center py-[16px] px-[12px] text-[#010101] font-['Saans_TRIAL',sans-serif] font-semibold text-[16px] tracking-[-0.32px] opacity-[0.97] border-b border-white/20 last:border-b-0 rounded-[8px] transition-colors hover:bg-[rgba(255,255,255,0.3)]"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
                   >
                     {link.label}
                   </motion.a>

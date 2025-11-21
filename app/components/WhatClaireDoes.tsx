@@ -1,8 +1,30 @@
+"use client";
+
 import Image from "next/image";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function WhatClaireDoes() {
+  // Refs for title and each card
+  const titleRef = useRef(null);
+  const card1Ref = useRef(null);
+  const card2Ref = useRef(null);
+  const card3Ref = useRef(null);
+  const card4Ref = useRef(null);
+  const card5Ref = useRef(null);
+  const card6Ref = useRef(null);
+
+  // InView states for each element
+  const titleInView = useInView(titleRef, { once: true, margin: "-100px" });
+  const card1InView = useInView(card1Ref, { once: true, margin: "-100px" });
+  const card2InView = useInView(card2Ref, { once: true, margin: "-100px" });
+  const card3InView = useInView(card3Ref, { once: true, margin: "-100px" });
+  const card4InView = useInView(card4Ref, { once: true, margin: "-100px" });
+  const card5InView = useInView(card5Ref, { once: true, margin: "-100px" });
+  const card6InView = useInView(card6Ref, { once: true, margin: "-100px" });
+
   return (
-    <div className="bg-gradient-to-b from-[#3c3f2e] to-[#1e2110] box-border flex flex-col gap-[40px] md:gap-[60px] isolate items-center pb-[50px] md:pb-[100px] pt-[60px] md:pt-[100px] px-4 md:px-[150px] relative w-full z-10 overflow-visible">
+    <div className="bg-gradient-to-b from-[#3c3f2e] to-[#1e2110] box-border flex flex-col gap-[40px] md:gap-[60px] isolate items-center pb-[50px] md:pb-[100px] pt-[60px] md:pt-[100px] px-4 md:px-6 lg:px-8 relative w-full z-10 overflow-visible">
       {/* Background Vector */}
       <div className="absolute h-[600px] md:h-[1302.133px] left-1/2 md:left-[47.5px] top-1/2 md:top-[-679px] translate-x-[-50%] md:translate-x-0 translate-y-[-50%] md:translate-y-0 w-[100vw] md:w-[1345.005px] pointer-events-none opacity-20 md:opacity-20 z-[1]">
         <Image
@@ -25,21 +47,35 @@ export default function WhatClaireDoes() {
       </div>
 
       {/* Title Section */}
-      <div className="flex flex-col gap-[8px] md:gap-[12px] items-center not-italic relative shrink-0 text-center text-white z-[3] mt-[20px] md:mt-0">
+      <motion.div
+        ref={titleRef}
+        initial={{ opacity: 0, y: 20 }}
+        animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="flex flex-col gap-[8px] md:gap-[12px] items-center not-italic relative shrink-0 text-center text-white z-[3] mt-[20px] md:mt-0"
+        style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+      >
         <h2 className="font-['CooperLtBT-Regular',sans-serif] leading-[normal] relative shrink-0 text-[32px] md:text-[56px] tracking-[-0.64px] md:tracking-[-1.12px]">
           What CLAIRE Does
         </h2>
         <p className="font-['Saans_TRIAL:Regular',sans-serif] leading-[1.4] relative shrink-0 text-[14px] md:text-[16px] tracking-[-0.28px] md:tracking-[-0.32px] w-full max-w-[536.574px] px-4 md:px-0">
           Every answer explained. Every decision supported.
         </p>
-      </div>
+      </motion.div>
 
-      {/* Feature Cards Grid - Responsive: Stack on mobile, 3 columns on desktop */}
-      <div className="flex flex-col md:flex-row gap-[20px] items-stretch md:items-start justify-center relative w-full max-w-[1140px] mx-auto z-[2]">
+      {/* Feature Cards Grid - Responsive: 1 col mobile, 2 col tablet, 3 col desktop */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] relative w-full max-w-[1140px] mx-auto z-[2] auto-rows-min">
         {/* Column 1 */}
-        <div className="flex flex-col gap-[20px] items-stretch relative w-full md:w-[calc(33.333%-14px)] lg:w-[366.667px] md:min-h-[674px]">
+        <div className="flex flex-col gap-[20px] items-stretch relative w-full min-w-0 md:min-w-[300px] lg:min-w-[320px] max-w-full md:max-w-none lg:max-w-[366.667px] md:min-h-[674px]">
           {/* Card 1: Instant CDI Query Generation */}
-          <div className="bg-gradient-to-b border border-[rgba(255,255,255,0.1)] border-solid from-[rgba(0,0,0,0.3)] md:h-[302px] relative rounded-[16px] md:rounded-[20px] shrink-0 to-[rgba(0,0,0,0)] w-full min-h-[300px] md:min-h-0 overflow-hidden">
+          <motion.div
+            ref={card1Ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={card1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="bg-gradient-to-b border border-[rgba(255,255,255,0.1)] border-solid from-[rgba(0,0,0,0.3)] md:h-[302px] relative rounded-[16px] md:rounded-[20px] shrink-0 to-[rgba(0,0,0,0)] w-full min-h-[300px] md:min-h-0 min-w-0 overflow-hidden"
+            style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+          >
             {/* Blur gradient overlay at bottom - full card width */}
             <div className="absolute bottom-0 left-0 right-0 h-[40px] bg-gradient-to-t from-[#3c3f2e] to-transparent pointer-events-none z-10" />
             <div className="box-border flex flex-col gap-[12px] md:h-[302px] items-start overflow-visible p-[20px] md:p-[24px] relative rounded-[inherit] w-full">
@@ -54,26 +90,44 @@ export default function WhatClaireDoes() {
                 <div className="relative h-full w-full scale-[0.75] md:scale-[0.9] origin-center">
                   {/* Generate Query Button */}
                   <div className="absolute flex items-center justify-center left-1/2 top-[2.8px] translate-x-[-50%] translate-y-0 z-[3]">
-                    <div className="flex-none rotate-[0.568deg]">
+                    <motion.div
+                      initial={{ rotate: 0, opacity: 0 }}
+                      animate={card1InView ? { rotate: 0.568, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                      transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      className="flex-none"
+                      style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                    >
                       <div className="bg-white border-[0.977px] border-[rgba(60,63,46,0.1)] border-solid box-border flex gap-[11.728px] items-center justify-center p-[10px] relative rounded-[10.137px] w-[121.302px]">
                         <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[#010101] text-[13.486px] tracking-[-0.2697px] whitespace-nowrap">
                           Generate Query
                         </p>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                   {/* Query Card */}
                   <div className="absolute flex items-center justify-center left-[5%] md:left-[calc(50%-131.32px)] top-[26.78px] translate-x-0 md:translate-x-[-50%] z-[2]">
-                    <div className="flex-none rotate-[4.459deg]">
+                    <motion.div
+                      initial={{ rotate: 0, opacity: 0 }}
+                      animate={card1InView ? { rotate: 4.459, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                      transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      className="flex-none"
+                      style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                    >
                       <div className="bg-[#383a2c] border border-[rgba(255,255,255,0.4)] border-solid box-border flex flex-col gap-[12px] items-start leading-[1.4] not-italic p-[14px] relative rounded-[10.38px] text-[11.799px] text-white tracking-[-0.236px] w-[162.778px] max-w-[calc(100%-20px)] md:max-w-none">
                         <p className="opacity-40 relative shrink-0 uppercase w-full">Query</p>
                         <p className="relative shrink-0 w-full">Would you clarify if sepsis criteria are met?</p>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                   {/* Clinical Indicators Card */}
                   <div className="absolute flex items-center justify-center right-[5%] md:right-[calc(50%-75.78px)] top-[26.78px] translate-x-0 md:translate-x-[50%] z-[1]">
-                    <div className="flex-none rotate-[353.946deg]">
+                    <motion.div
+                      initial={{ rotate: 0, opacity: 0 }}
+                      animate={card1InView ? { rotate: -6.054, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                      transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      className="flex-none"
+                      style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                    >
                       <div className="bg-[#383a2c] border-[0.917px] border-[rgba(255,255,255,0.1)] border-solid box-border flex flex-col gap-[11px] items-start not-italic p-[12.833px] relative rounded-[9.515px] text-[10.816px] text-white tracking-[-0.2163px] w-[244.244px] max-w-[calc(100%-20px)] md:max-w-none">
                         <p className="leading-[1.4] opacity-40 relative shrink-0 uppercase w-full">Clinical Indicators present:</p>
                         <ul className="block leading-[1.4] relative shrink-0 w-full list-disc list-inside space-y-[3.67px]">
@@ -82,15 +136,22 @@ export default function WhatClaireDoes() {
                           <li>WBC 18,000</li>
                         </ul>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 2: Searchable Medical Code */}
-          <div className="bg-gradient-to-b border border-[rgba(255,255,255,0.1)] border-solid flex-[1_0_0] flex-col from-[rgba(0,0,0,0.3)] gap-[12px] items-start min-h-[300px] md:min-h-0 p-[20px] md:p-[24px] relative rounded-[16px] md:rounded-[20px] shrink-0 to-[rgba(0,0,0,0)] w-full overflow-hidden">
+          <motion.div
+            ref={card2Ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={card2InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="bg-gradient-to-b border border-[rgba(255,255,255,0.1)] border-solid flex-[1_0_0] flex-col from-[rgba(0,0,0,0.3)] gap-[12px] items-start min-h-[300px] md:min-h-0 p-[20px] md:p-[24px] relative rounded-[16px] md:rounded-[20px] shrink-0 to-[rgba(0,0,0,0)] w-full overflow-hidden"
+            style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+          >
             {/* Blur gradient overlay at bottom - full card width */}
             <div className="absolute bottom-0 left-0 right-0 h-[40px] bg-gradient-to-t from-[#3c3f2e] to-transparent pointer-events-none z-10" />
             <h3 className="flex flex-col font-['Saans_TRIAL',sans-serif] font-medium justify-center leading-[0] w-full not-italic opacity-[0.97] relative shrink-0 text-[16px] md:text-[18px] text-white tracking-[-0.32px] md:tracking-[-0.36px]">
@@ -116,14 +177,20 @@ export default function WhatClaireDoes() {
                 </div>
                 {/* Result Cards */}
                 <div className="absolute flex items-center justify-center left-1/2 top-[30.89px] translate-x-[-50%]">
-                  <div className="flex-none rotate-[357.365deg]">
+                  <motion.div
+                    initial={{ rotate: 0, opacity: 0 }}
+                    animate={card2InView ? { rotate: -2.635, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="flex-none"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  >
                     <div className="bg-white border-[0.977px] border-[rgba(60,63,46,0.1)] border-solid box-border flex gap-[11.728px] items-center p-[7.818px] relative rounded-[10.137px] w-[297px] max-w-full">
                       <div className="bg-[#3c3f2e] box-border flex gap-[5.864px] items-center justify-center px-[7.818px] py-[4.886px] relative rounded-[5.864px] shrink-0">
                         <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[10.75px] text-white tracking-[-0.1075px] uppercase">ICD-10</p>
                       </div>
                       <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[#010101] text-[13.486px] tracking-[-0.2697px]">I48.91 - Unspec AFib</p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
                
                 <div className="absolute bg-gradient-to-b border-[0.843px] border-[rgba(60,63,46,0.1)] border-solid box-border flex from-[rgba(56,58,44,0)] gap-[10.114px] items-center left-1/2 opacity-40 p-[6.742px] rounded-bl-[8.742px] rounded-br-[8.742px] to-[rgba(56,58,44,0.6)] top-[84.61px] translate-x-[-50%] w-[256.127px]">
@@ -140,13 +207,20 @@ export default function WhatClaireDoes() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Column 2 */}
-        <div className="flex flex-col gap-[20px] items-stretch relative w-full md:w-[calc(33.333%-14px)] lg:w-[366.667px] md:min-h-[674px]">
+        <div className="flex flex-col gap-[20px] items-stretch relative w-full min-w-0 md:min-w-[300px] lg:min-w-[320px] max-w-full md:max-w-none lg:max-w-[366.667px] md:min-h-[674px]">
           {/* Card 3: Step-by-Step Clinical Reasoning */}
-          <div className="bg-gradient-to-b border border-[rgba(255,255,255,0.7)] border-solid box-border flex flex-col from-[rgba(0,0,0,0.1)] gap-[12px] md:h-[360px] items-start p-[20px] md:p-[24px] relative rounded-[16px] md:rounded-[20px] shrink-0 to-[rgba(0,0,0,0)] w-full min-h-[360px] md:min-h-0 overflow-hidden">
+          <motion.div
+            ref={card3Ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={card3InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="bg-gradient-to-b border border-[rgba(255,255,255,0.7)] border-solid box-border flex flex-col from-[rgba(0,0,0,0.1)] gap-[12px] md:h-[360px] items-start p-[20px] md:p-[24px] relative rounded-[16px] md:rounded-[20px] shrink-0 to-[rgba(0,0,0,0)] w-full min-h-[360px] md:min-h-0 overflow-hidden"
+            style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+          >
             {/* Blur gradient overlay at bottom - full card width */}
             <div className="absolute bottom-0 left-0 right-0 h-[40px] bg-gradient-to-t from-[rgba(0,0,0,0.1)] to-transparent pointer-events-none z-10" />
             <h3 className="flex flex-col font-['Saans_TRIAL',sans-serif] font-medium justify-center leading-[0] w-full not-italic opacity-[0.97] relative shrink-0 text-[16px] md:text-[18px] text-white tracking-[-0.32px] md:tracking-[-0.36px]">
@@ -160,37 +234,62 @@ export default function WhatClaireDoes() {
               <div className="relative h-full w-full">
                 {/* Step 3: Code */}
                 <div className="absolute flex items-center justify-center left-1/2 top-[10px] translate-x-[-50%]">
-                  <div className="flex-none rotate-[356.525deg]">
+                  <motion.div
+                    initial={{ rotate: 0, opacity: 0 }}
+                    animate={card3InView ? { rotate: -3.475, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="flex-none"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  >
                     <div className="bg-white border-[0.977px] border-[rgba(60,63,46,0.1)] border-solid box-border flex flex-col gap-[11px] items-start leading-[1.4] not-italic p-[13px] relative rounded-[12px] text-[#010101] text-[10.816px] tracking-[-0.2163px] w-[244.244px] max-w-[calc(100%-20px)]">
                       <p className="relative shrink-0 uppercase w-full">Step 3: code</p>
                       <p className="relative shrink-0 w-full">N17.1 captures both acuity and severity for DRG impact</p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
                 {/* Step 2: Classify */}
                 <div className="absolute flex items-center justify-center left-0 top-[81.67px]">
-                  <div className="flex-none rotate-[353.742deg]">
+                  <motion.div
+                    initial={{ rotate: 0, opacity: 0 }}
+                    animate={card3InView ? { rotate: -6.258, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="flex-none"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  >
                     <div className="bg-[#383a2c] border-[0.825px] border-[rgba(255,255,255,0.5)] border-solid box-border flex flex-col gap-[9.9px] items-start leading-[1.4] not-italic p-[11.55px] relative rounded-[8.563px] text-[9.734px] text-white tracking-[-0.1947px] w-[242.919px] max-w-[calc(100%-20px)]">
                       <p className="opacity-40 relative shrink-0 uppercase w-full">Step 2: classify</p>
                       <p className="relative shrink-0 w-full">{`Stage 2 AKI based on creatinine elevation >2-3x baseline`}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
                 {/* Step 1: Identify */}
                 <div className="absolute flex items-center justify-center left-1/2 top-[143.43px] translate-x-[-50%]">
-                  <div className="flex-none rotate-[1.21deg]">
+                  <motion.div
+                    initial={{ rotate: 0, opacity: 0 }}
+                    animate={card3InView ? { rotate: 1.21, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="flex-none"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  >
                     <div className="bg-[#383a2c] border-[0.825px] border-[rgba(255,255,255,0.1)] border-solid box-border flex flex-col gap-[9.9px] items-start leading-[1.4] not-italic p-[11.55px] relative rounded-[8.563px] text-[9.734px] text-white tracking-[-0.1947px] w-[242.919px] max-w-[calc(100%-20px)]">
                       <p className="opacity-40 relative shrink-0 uppercase w-full">Step 1: Identify</p>
                       <p className="relative shrink-0 w-full">{`Patient meets criteria for acute kidney injury (Cr increase >0.3)`}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 4: DRG & HCC Impact Visibility */}
-          <div className="bg-gradient-to-b border border-[rgba(255,255,255,0.1)] border-solid flex-[1_0_0] flex-col from-[rgba(0,0,0,0.3)] gap-[12px] items-start min-h-[280px] md:min-h-0 p-[20px] md:p-[24px] relative rounded-[16px] md:rounded-[20px] shrink-0 to-[rgba(0,0,0,0)] w-full overflow-hidden">
+          <motion.div
+            ref={card4Ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={card4InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="bg-gradient-to-b border border-[rgba(255,255,255,0.1)] border-solid flex-[1_0_0] flex-col from-[rgba(0,0,0,0.3)] gap-[12px] items-start min-h-[280px] md:min-h-0 p-[20px] md:p-[24px] relative rounded-[16px] md:rounded-[20px] shrink-0 to-[rgba(0,0,0,0)] w-full overflow-hidden"
+            style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+          >
             {/* Blur gradient overlay at bottom - full card width */}
             <div className="absolute bottom-0 left-0 right-0 h-[40px] bg-gradient-to-t from-[#3c3f2e] to-transparent pointer-events-none z-10" />
             <h3 className="flex flex-col font-['Saans_TRIAL',sans-serif] font-medium justify-center leading-[0] w-full not-italic opacity-[0.97] relative shrink-0 text-[16px] md:text-[18px] text-white tracking-[-0.32px] md:tracking-[-0.36px]">
@@ -204,7 +303,13 @@ export default function WhatClaireDoes() {
               <div className="relative h-full w-full">
                 {/* DRG Impact Card */}
                 <div className="absolute flex items-center justify-center left-1/2 top-[calc(50%-26.94px)] translate-x-[-50%] translate-y-[-50%]">
-                  <div className="flex-none rotate-[3.286deg]">
+                  <motion.div
+                    initial={{ rotate: 0, opacity: 0 }}
+                    animate={card4InView ? { rotate: 3.286, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="flex-none"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  >
                     <div className="bg-white border-[1.101px] border-[rgba(60,63,46,0.1)] border-solid box-border flex flex-col gap-[12.392px] items-start p-[14.645px] relative rounded-[13.518px] w-[304.163px] max-w-[calc(100%-20px)]">
                       <div className="flex gap-[12.392px] items-start relative shrink-0 w-full">
                         <p className="flex-[1_0_0] font-medium leading-[1.4] min-h-px min-w-px not-italic relative shrink-0 text-[#010101] text-[12.184px] tracking-[-0.2437px] uppercase">DRG Impact</p>
@@ -217,35 +322,54 @@ export default function WhatClaireDoes() {
                         <div className="bg-[#63b967] flex-[1_0_0] h-[4.967px] min-h-px min-w-px opacity-10 rounded-[18.024px] shrink-0" />
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
                 {/* SOI Score */}
                 <div className="absolute flex items-center justify-center left-[calc(50%-79.43px)] top-[calc(50%+36.89px)] translate-x-[-50%] translate-y-[-50%]">
-                  <div className="flex-none rotate-[354.952deg]">
+                  <motion.div
+                    initial={{ rotate: 0, opacity: 0 }}
+                    animate={card4InView ? { rotate: -5.048, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="flex-none"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  >
                     <div className="bg-[#383a2c] border-[0.679px] border-[rgba(255,255,255,0.5)] border-solid box-border flex flex-col items-center leading-[1.4] not-italic pb-[10.696px] pt-[9.873px] px-[4.937px] rounded-[7.046px] text-white w-[116.011px]">
                       <p className="relative shrink-0 text-[22.215px] tracking-[-0.4443px]">3.2</p>
                       <p className="opacity-40 relative shrink-0 text-[8.009px] tracking-[-0.1602px] uppercase">SOI Score</p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
                 {/* HCC 18 */}
                 <div className="absolute flex items-center justify-center left-[calc(50%+79.43px)] top-[calc(50%+37.18px)] translate-x-[-50%] translate-y-[-50%]">
-                  <div className="flex-none rotate-[354.952deg]">
+                  <motion.div
+                    initial={{ rotate: 0, opacity: 0 }}
+                    animate={card4InView ? { rotate: -5.048, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="flex-none"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  >
                     <div className="bg-[#383a2c] border-[0.679px] border-[rgba(255,255,255,0.5)] border-solid box-border flex flex-col items-center leading-[1.4] not-italic pb-[10.696px] pt-[9.873px] px-[4.937px] relative rounded-[7.046px] text-white w-[116.011px]">
                       <p className="relative shrink-0 text-[22.215px] tracking-[-0.4443px]">HCC 18</p>
                       <p className="opacity-40 relative shrink-0 text-[8.009px] tracking-[-0.1602px] uppercase">RAF +0.318</p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Column 3 */}
-        <div className="flex flex-col gap-[20px] items-stretch relative w-full md:w-[calc(33.333%-14px)] lg:w-[366.667px] md:min-h-[674px]">
+        <div className="flex flex-col gap-[20px] items-stretch relative w-full min-w-0 md:min-w-[300px] lg:min-w-[320px] max-w-full md:max-w-none lg:max-w-[366.667px] md:min-h-[674px]">
           {/* Card 5: Intelligent Code Suggestions */}
-          <div className="bg-gradient-to-b border border-[rgba(255,255,255,0.1)] border-solid from-[rgba(0,0,0,0.3)] md:h-[325px] relative rounded-[16px] md:rounded-[20px] shrink-0 to-[rgba(0,0,0,0)] w-full min-h-[320px] md:min-h-0 overflow-hidden">
+          <motion.div
+            ref={card5Ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={card5InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="bg-gradient-to-b border border-[rgba(255,255,255,0.1)] border-solid from-[rgba(0,0,0,0.3)] md:h-[325px] relative rounded-[16px] md:rounded-[20px] shrink-0 to-[rgba(0,0,0,0)] w-full min-h-[320px] md:min-h-0 overflow-hidden"
+            style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+          >
             {/* Blur gradient overlay at bottom - full card width */}
             <div className="absolute bottom-0 left-0 right-0 h-[40px] bg-gradient-to-t from-[#3c3f2e] to-transparent pointer-events-none z-10" />
             <div className="box-border flex flex-col gap-[12px] md:h-[325px] items-start overflow-visible p-[20px] md:p-[24px] relative rounded-[inherit] w-full">
@@ -260,17 +384,29 @@ export default function WhatClaireDoes() {
                 <div className="relative h-full w-full">
                   {/* Patient Note */}
                   <div className="absolute flex items-center justify-center left-1/2 top-[calc(50%+29.61px)] translate-x-[-50%] translate-y-[-50%]">
-                    <div className="flex-none rotate-[358.113deg]">
+                    <motion.div
+                      initial={{ rotate: 0, opacity: 0 }}
+                      animate={card5InView ? { rotate: -1.887, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                      transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      className="flex-none"
+                      style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                    >
                       <div className="bg-gradient-to-r border border-[rgba(255,255,255,0.1)] border-solid box-border flex flex-col from-[rgba(255,255,255,0.05)] gap-[16.608px] h-[61.162px] items-start justify-center p-[12.232px] relative rounded-[10.38px] to-[rgba(153,153,153,0.05)] w-[294.453px] max-w-[calc(100%-20px)]">
                         <p className="leading-[1.4] not-italic relative shrink-0 text-[11.799px] text-white tracking-[-0.236px] w-full">
                           📋 Patient admitted with acute exacerbation of COPD with hypoxemia requiring supplemental oxygen...
                         </p>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                   {/* Code J44.1 */}
                   <div className="absolute flex items-center justify-center left-[calc(50%+66.29px)] top-[calc(50%-15.03px)] translate-x-[-50%] translate-y-[-50%]">
-                    <div className="flex-none rotate-[1.464deg]">
+                    <motion.div
+                      initial={{ rotate: 0, opacity: 0 }}
+                      animate={card5InView ? { rotate: 1.464, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                      transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      className="flex-none"
+                      style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                    >
                       <div className="bg-white border-[0.868px] border-[rgba(60,63,46,0.1)] border-solid box-border flex gap-[10.412px] items-center p-[6.942px] relative rounded-[9px]">
                         <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[#010101] text-[11.973px] tracking-[-0.2395px]">J44.1</p>
                         <div className="bg-[#4caf50] box-border flex gap-[5.206px] items-center justify-center px-[6.942px] py-[4.339px] relative rounded-[5.206px] shrink-0">
@@ -280,11 +416,17 @@ export default function WhatClaireDoes() {
                           <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[9.545px] text-white tracking-[-0.0954px] uppercase">Explained</p>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                   {/* Code J96.01 */}
                   <div className="absolute flex items-center justify-center left-[calc(50%-47.45px)] top-[calc(50%-36.57px)] translate-x-[-50%] translate-y-[-50%]">
-                    <div className="flex-none rotate-[353.903deg]">
+                    <motion.div
+                      initial={{ rotate: 0, opacity: 0 }}
+                      animate={card5InView ? { rotate: -6.097, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                      transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      className="flex-none"
+                      style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                    >
                       <div className="bg-white border-[0.977px] border-[rgba(60,63,46,0.1)] border-solid box-border flex gap-[11.728px] items-center p-[7.818px] relative rounded-[10.137px]">
                         <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[#010101] text-[13.486px] tracking-[-0.2697px]">J96.01</p>
                         <div className="bg-[#4caf50] box-border flex gap-[5.864px] items-center justify-center px-[7.818px] py-[4.886px] relative rounded-[5.864px] shrink-0">
@@ -294,15 +436,22 @@ export default function WhatClaireDoes() {
                           <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[10.75px] text-white tracking-[-0.1075px] uppercase">Explained</p>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 6: Audit & Compliance Support */}
-          <div className="bg-gradient-to-b border border-[rgba(255,255,255,0.1)] border-solid flex-[1_0_0] flex-col from-[rgba(0,0,0,0.3)] gap-[12px] items-start min-h-[300px] md:min-h-0 p-[20px] md:p-[24px] relative rounded-[16px] md:rounded-[20px] shrink-0 to-[rgba(0,0,0,0)] w-full overflow-hidden">
+          <motion.div
+            ref={card6Ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={card6InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="bg-gradient-to-b border border-[rgba(255,255,255,0.1)] border-solid flex-[1_0_0] flex-col from-[rgba(0,0,0,0.3)] gap-[12px] items-start min-h-[300px] md:min-h-0 p-[20px] md:p-[24px] relative rounded-[16px] md:rounded-[20px] shrink-0 to-[rgba(0,0,0,0)] w-full overflow-hidden"
+            style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+          >
             {/* Blur gradient overlay at bottom - full card width */}
             <div className="absolute bottom-0 left-0 right-0 h-[40px] bg-gradient-to-t from-[#3c3f2e] to-transparent pointer-events-none z-10" />
             <h3 className="flex flex-col font-['Saans_TRIAL',sans-serif] font-medium justify-center leading-[0] w-full not-italic opacity-[0.97] relative shrink-0 text-[16px] md:text-[18px] text-white tracking-[-0.32px] md:tracking-[-0.36px]">
@@ -316,16 +465,28 @@ export default function WhatClaireDoes() {
               <div className="relative h-full w-full">
                 {/* Audit Readiness Score */}
                 <div className="absolute flex items-center justify-center left-1/2 top-[-4.35px] translate-x-[-50%]">
-                  <div className="flex-none rotate-[357.587deg]">
+                  <motion.div
+                    initial={{ rotate: 0, opacity: 0 }}
+                    animate={card6InView ? { rotate: -2.413, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="flex-none"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  >
                     <div className="bg-white border-[0.679px] border-[rgba(255,255,255,0.5)] border-solid box-border flex flex-col items-center leading-[1.4] not-italic pb-[10.696px] pt-[9.873px] px-[4.937px] relative rounded-[10px] w-[208.036px]">
                       <p className="relative shrink-0 text-[#55b359] text-[22.215px] tracking-[-0.4443px]">94%</p>
                       <p className="relative shrink-0 text-[#010101] text-[8.009px] tracking-[-0.1602px] uppercase">Audit readiness score</p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
                 {/* Valid Item */}
                 <div className="absolute flex items-center justify-center left-[9.46px] top-[53.24px]">
-                  <div className="flex-none rotate-[2.916deg]">
+                  <motion.div
+                    initial={{ rotate: 0, opacity: 0 }}
+                    animate={card6InView ? { rotate: 2.916, opacity: 1 } : { rotate: 0, opacity: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="flex-none"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  >
                     <div className="bg-[#383a2c] border-[0.843px] border-[rgba(255,255,255,0.1)] border-solid box-border flex gap-[10.114px] items-center p-[6.742px] relative rounded-[8.742px]">
                       <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[11.63px] text-white tracking-[-0.2326px]">Pneumonia meets all CMS criteria</p>
                       <div className="bg-[rgba(255,255,255,0.2)] box-border flex gap-[5.057px] items-center justify-center px-[6.742px] py-[4.214px] relative rounded-[5.057px] shrink-0">
@@ -335,10 +496,16 @@ export default function WhatClaireDoes() {
                         <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[9.271px] text-white tracking-[-0.0927px] uppercase">valid</p>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
                 {/* Gap Items */}
-                <div className="absolute bg-[#383a2c] border-[0.843px] border-[rgba(255,255,255,0.1)] border-solid box-border flex gap-[10.114px] items-center left-0 opacity-60 p-[6.742px] relative rounded-[8.742px] top-[102.09px] w-full md:w-auto">
+                <motion.div
+                  initial={{ rotate: 0, opacity: 0 }}
+                  animate={card6InView ? { rotate: 0, opacity: 0.6 } : { rotate: 0, opacity: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className="absolute bg-[#383a2c] border-[0.843px] border-[rgba(255,255,255,0.1)] border-solid box-border flex gap-[10.114px] items-center left-0 p-[6.742px] relative rounded-[8.742px] top-[102.09px] w-full md:w-auto"
+                  style={{ willChange: 'opacity', transform: 'translateZ(0)' }}
+                >
                   <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[11.63px] text-white tracking-[-0.2326px]">CHF diagnosis lacks EF documentation</p>
                   <div className="bg-[rgba(255,255,255,0.2)] box-border flex gap-[5.057px] items-center justify-center px-[6.742px] py-[4.214px] relative rounded-[5.057px] shrink-0">
                     <svg className="size-[14px]" viewBox="0 0 24 24" fill="currentColor">
@@ -346,9 +513,15 @@ export default function WhatClaireDoes() {
                     </svg>
                     <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[9.271px] text-white tracking-[-0.0927px] uppercase">Gap</p>
                   </div>
-                </div>
+                </motion.div>
                 <div className="absolute flex items-center justify-center left-[25.26px] top-[134.53px] opacity-20">
-                  <div className="flex-none rotate-[5.711deg]">
+                  <motion.div
+                    initial={{ rotate: 0, opacity: 0 }}
+                    animate={card6InView ? { rotate: 5.711, opacity: 0.2 } : { rotate: 0, opacity: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="flex-none"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  >
                     <div className="bg-[#383a2c] border-[0.843px] border-[rgba(255,255,255,0.1)] border-solid box-border flex gap-[10.114px] items-center p-[6.742px] relative rounded-[8.742px]">
                       <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[11.63px] text-white tracking-[-0.2326px]">Sepsis query recommended</p>
                       <div className="bg-[rgba(255,255,255,0.2)] box-border flex gap-[5.057px] items-center justify-center px-[6.742px] py-[4.214px] relative rounded-[5.057px] shrink-0">
@@ -358,11 +531,11 @@ export default function WhatClaireDoes() {
                         <p className="font-medium leading-[1.4] not-italic relative shrink-0 text-[9.271px] text-white tracking-[-0.0927px] uppercase">Gap</p>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

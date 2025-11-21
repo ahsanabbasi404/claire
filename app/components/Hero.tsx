@@ -98,47 +98,28 @@ export default function Hero() {
   return (
     <div className="box-border flex flex-col gap-[30px] md:gap-[60px] items-center pb-[60px] md:pb-[120px] pt-[30px] md:pt-[50px] md:px-6 lg:px-8 relative w-full overflow-x-hidden md:overflow-y-clip">
       {/* Background Vector */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-        className="absolute h-[600px] md:h-[1256.46px] left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] w-[calc(100%-32px)] max-w-[1297.829px] md:w-[1297.829px] pointer-events-none opacity-30 md:opacity-100 overflow-hidden"
-      >
-        <motion.div
-          animate={{
-            rotate: [0, 2, -2, 0],
-            scale: [1, 1.02, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <Image
-            alt=""
-            className="block max-w-none w-full h-full"
-            height={1256.46}
-            src="/hero-bg-vector.svg"
-            width={1297.829}
-            priority
-          />
-        </motion.div>
-      </motion.div>
+      <div className="absolute h-[600px] md:h-[1256.46px] left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] w-[calc(100%-32px)] max-w-[1297.829px] md:w-[1297.829px] pointer-events-none opacity-30 md:opacity-100 overflow-hidden">
+        <Image
+          alt=""
+          className="block max-w-none w-full h-full"
+          height={1256.46}
+          src="/hero-bg-vector.svg"
+          width={1297.829}
+          priority
+        />
+      </div>
 
       {/* Main Content */}
       <div className="flex flex-col gap-[16px] md:gap-[24px] items-center relative z-10 w-full max-w-[1140px] px-4 md:px-6 lg:px-8">
         {/* Tagline Banner */}
         <motion.div
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="bg-[#ececec] border border-[rgba(0,0,0,0.1)] border-solid relative rounded-[20px] md:rounded-[30px] min-w-0 inline-block max-w-[calc(100%-32px)] md:max-w-none md:pb-0"
+          style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
         >
-          <motion.div
-  initial={{ y: -50, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+          <div
   className="
     w-full                 /* ⭐ FIX: full width on mobile */
     md:inline-block        /* original behavior on md+ */
@@ -151,10 +132,7 @@ export default function Hero() {
 >
   <div className="box-border flex gap-[10px] items-center overflow-clip p-[4px] relative rounded-[inherit]">
 
-    <motion.div
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
+    <div
       className="bg-[#f1f1f1] box-border flex gap-[15px] items-center justify-center 
                  px-[12px] py-[8px] relative rounded-[16px] md:rounded-[20px]
                  shadow-[0px_151px_42px_0px_rgba(0,0,0,0),
@@ -176,10 +154,10 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none 
                       shadow-[inset_0px_-1px_2px_0px_rgba(0,0,0,0.2),
                               inset_0px_2px_1px_0px_#ffffff]" />
-    </motion.div>
+    </div>
 
   </div>
-</motion.div>
+</div>
 
 
         </motion.div>
@@ -188,23 +166,24 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-col gap-[8px] md:gap-[12px] items-center not-italic relative shrink-0 w-full px-4 md:px-0"
         >
           <motion.h1
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="bg-clip-text bg-gradient-to-r font-['CooperLtBT-Regular',sans-serif] from-[#010101] leading-[normal] relative shrink-0 text-[32px] sm:text-[42px] md:text-[56px] to-[#3c3f2e] tracking-[-0.64px] md:tracking-[-1.12px] text-center"
-            style={{ WebkitTextFillColor: "transparent" }}
+            style={{ WebkitTextFillColor: "transparent", willChange: 'opacity, transform', transform: 'translateZ(0)' }}
           >
             Clarity in Every Code
           </motion.h1>
           <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="font-['Saans_TRIAL',sans-serif] leading-[1.4] relative shrink-0 text-[#6e6e6e] text-[14px] md:text-[16px] text-center tracking-[-0.28px] md:tracking-[-0.32px] w-full max-w-[536.574px] whitespace-pre-wrap px-2 md:px-0"
+            style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
           >
             <p className="leading-[1.4] mb-0">{`Stop guessing. CLAIRE is the intelligent medical coding and CDI assistant that interprets clinical documentation, suggests accurate ICD-10-CM, CPT, `}</p>
             <p className="leading-[1.4] mb-0">{`HCPCS codes, and explains the clinical reasoning behind every `}</p>
@@ -217,30 +196,29 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="flex flex-col sm:flex-row gap-[10px] items-stretch sm:items-start justify-center relative shrink-0 w-full max-w-[500px] md:max-w-none px-4 md:px-0"
+          style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
         >
           <motion.button
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1.1 }}
-            whileHover={{ scale: 1.05, boxShadow: "0px 8px 25px rgba(60,63,46,0.3)" }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className="bg-gradient-to-r from-[#3c3f2e] to-[#3c3f2e] box-border flex flex-col gap-[7.978px] items-center justify-center overflow-clip px-[16px] md:px-[20px] py-[10px] md:py-[12px] relative rounded-[12px] shadow-[0px_44.1px_12.41px_0px_rgba(60,63,46,0),0px_28.144px_11.302px_0px_rgba(60,63,46,0.02),0px_15.956px_9.529px_0px_rgba(60,63,46,0.07),0px_7.091px_7.091px_0px_rgba(60,63,46,0.12),0px_1.773px_3.767px_0px_rgba(60,63,46,0.14)] shrink-0 border-none cursor-pointer w-full sm:w-auto"
+            style={{ willChange: 'transform', transform: 'translateZ(0)' }}
           >
             <span className="flex flex-col font-['Saans_TRIAL',sans-serif] font-semibold justify-center leading-[0] not-italic opacity-[0.97] relative shrink-0 text-[14px] md:text-[16px] text-center text-white tracking-[-0.28px] md:tracking-[-0.32px] whitespace-nowrap">
               <p className="leading-[normal]">Start Your Free Trial</p>
             </span>
           </motion.button>
           <motion.button
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1.2 }}
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(60,63,46,0.15)" }}
-            whileTap={{ scale: 0.95 }}
-            className="backdrop-blur-[2px] backdrop-filter bg-gradient-to-r from-[rgba(60,63,46,0.1)] to-[rgba(60,63,46,0.1)] box-border flex flex-col gap-[7.978px] items-center justify-center overflow-clip px-[16px] md:px-[20px] py-[10px] md:py-[12px] relative rounded-[12px] shrink-0 border-none cursor-pointer w-full sm:w-auto"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="bg-gradient-to-r from-[rgba(60,63,46,0.1)] to-[rgba(60,63,46,0.1)] box-border flex flex-col gap-[7.978px] items-center justify-center overflow-clip px-[16px] md:px-[20px] py-[10px] md:py-[12px] relative rounded-[12px] shrink-0 border-none cursor-pointer w-full sm:w-auto backdrop-blur-[2px]"
+            style={{ willChange: 'transform', transform: 'translateZ(0)', backdropFilter: 'blur(2px)' }}
           >
             <span className="flex flex-col font-['Saans_TRIAL',sans-serif] font-semibold justify-center leading-[0] not-italic opacity-[0.97] relative shrink-0 text-[#3c3f2e] text-[14px] md:text-[16px] text-center tracking-[-0.28px] md:tracking-[-0.32px] whitespace-nowrap">
               <p className="leading-[normal]">See CLAIRE in Action</p>
@@ -256,13 +234,19 @@ export default function Hero() {
         animate={isInView ? "visible" : "hidden"}
         variants={containerVariants}
         className="flex flex-col gap-[20px] md:gap-[32px] items-center relative z-10 w-full max-w-[1140px] mx-auto px-4 md:px-6 lg:px-8"
+        style={{ willChange: 'opacity' }}
       >
         <motion.div
           variants={itemVariants}
           className="relative w-full max-w-[383px] md:max-w-[1140px] h-[384px] rounded-[16px] md:rounded-[24px] overflow-hidden mx-auto"
+          style={{ willChange: 'opacity, transform' }}
         >
           {/* Background Image */}
-          <motion.div variants={imageVariants} className="absolute inset-0 w-full h-full">
+          <motion.div 
+            variants={imageVariants} 
+            className="absolute inset-0 w-full h-full"
+            style={{ willChange: 'opacity, transform' }}
+          >
             <Image
               alt=""
               className="w-full h-full object-cover object-center"
@@ -279,6 +263,7 @@ export default function Hero() {
             <motion.div
               variants={searchVariants}
               className="backdrop-blur-[14.069px] backdrop-filter bg-gradient-to-b border-[1.107px] border-[rgba(255,255,255,0.1)] border-solid from-[rgba(255,255,255,0.1)] h-[81px] md:h-[107.787px] relative rounded-[14px] md:rounded-[17.718px] shrink-0 to-[rgba(255,255,255,0.01)] w-full"
+              style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
             >
               <div className="box-border flex gap-[11.812px] h-full items-center overflow-clip p-[14px] md:p-[17.718px] relative rounded-[inherit] w-full">
                 <motion.p
@@ -293,6 +278,7 @@ export default function Hero() {
                     delay: 1.2,
                   }}
                   className="font-['Saans_TRIAL',sans-serif] flex-[1_0_0] leading-[normal] not-italic relative text-[16px] md:text-[20.671px] text-white tracking-[-0.48px] md:tracking-[-0.6201px] whitespace-pre-wrap"
+                  style={{ willChange: 'opacity' }}
                 >
                   How can i help you today?
                 </motion.p>
@@ -316,6 +302,7 @@ export default function Hero() {
                   whileHover={{ scale: 1.05, backgroundColor: "rgba(0,0,0,0.2)" }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-[rgba(0,0,0,0.1)] border-[0.586px] border-[rgba(255,255,255,0.1)] border-solid rounded-[9.379px] cursor-pointer transition-colors"
+                  style={{ willChange: 'transform, opacity' }}
                 >
                   <div className="px-[8px] py-[8px] md:px-[9.379px] md:py-[9.379px]">
                     <p className="font-['Saans_TRIAL',sans-serif] font-medium leading-[normal] not-italic text-[12px] md:text-[14.069px] text-white tracking-[-0.12px] md:tracking-[-0.1407px] whitespace-pre-wrap">
@@ -363,9 +350,10 @@ export default function Hero() {
                   duration: 2,
                   repeat: Infinity,
                   delay: 1 + index * 0.3,
-                  ease: "easeInOut",
+                  ease: "linear",
                 }}
                 className="overflow-clip relative shrink-0 size-[24px] md:size-[32px]"
+                style={{ willChange: 'transform', transform: 'translateZ(0)' }}
               >
                 <Image
                   alt={item.alt}

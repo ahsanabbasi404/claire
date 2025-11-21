@@ -124,7 +124,7 @@ export default function HowYourTeamUses() {
 
   return (
     <div className="relative w-full py-12 md:py-20 px-4 md:px-0">
-      <div className="bg-neutral-100 border-t border-[rgba(60,63,46,0.1)] border-solid box-border flex flex-col gap-[30px] md:gap-[50px] items-center pb-0 pt-[50px] md:pt-[80px] px-4 md:px-0 relative w-full min-h-[500px] md:h-[526px]">
+      <div className="bg-neutral-100 border-t border-[rgba(60,63,46,0.1)] border-solid box-border flex flex-col gap-[30px] md:gap-[50px] items-center pb-12 md:pb-16 pt-[50px] md:pt-[80px] px-4 md:px-0 relative w-full min-h-[500px] md:min-h-[526px]">
         {/* Background Vector - Hidden on mobile */}
         <div className="hidden md:block absolute h-[404px] left-1/2 top-[50px] translate-x-[-50%] w-[804px] pointer-events-none opacity-50">
           <Image
@@ -143,13 +143,12 @@ export default function HowYourTeamUses() {
 
         {/* Use Case Cards */}
         <div ref={containerRef} className="relative max-w-[1440px] mx-auto pb-8 md:pb-0">
-          {/* Desktop: Flex layout with rotations */}
+          {/* Desktop: Grid layout with rotations */}
           <motion.div
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={containerVariants}
-            // md:gap-[24px] lg:gap-[32px] xl:gap-[40px]
-            className="hidden md:flex md:flex-row md:items-start md:justify-center  relative w-full min-h-[334px] px-4 md:px-8 lg:px-12"
+            className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 md:items-start md:justify-items-center relative w-full min-h-[334px] px-4 md:px-8 lg:px-12"
           >
             {useCases.map((useCase, index) => (
               <motion.div
