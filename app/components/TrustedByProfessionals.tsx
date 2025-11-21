@@ -118,24 +118,21 @@ export default function TrustedByProfessionals() {
         </div>
 
         {/* Stats Section with Blur Effect */}
-        <div className="flex h-[198px] items-center justify-center overflow-visible relative shrink-0 w-full max-w-[1141px] z-20">
+        <div className="flex h-[198px] items-center justify-center overflow-visible relative shrink-0 w-full max-w-[1141px] z-20"
+        >
           {/* Blurred Background Drop */}
           <div className="absolute inset-0 backdrop-blur-sm bg-white/70 rounded-[20px] shadow-xl border border-[rgba(60,63,46,0.1)] z-0" />
           
           {/* Stat 1 */}
           <div className="flex flex-[1_0_0] flex-col gap-[4px] items-center justify-center not-italic relative shrink-0 z-10">
             <p 
-              className="leading-[normal] whitespace-nowrap" 
+              className="font-['Saans_TRIAL',sans-serif] font-medium leading-[normal] relative shrink-0 text-[64px] tracking-[-1.28px] whitespace-nowrap" 
               style={{ 
-                
-                fontSize: '64px',
-                fontWeight: '00',
-                letterSpacing: '-1.28px',
                 background: 'linear-gradient(180deg, #DAA03F 0%, #994F0C 100%)',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-                
+                WebkitTextFillColor: 'transparent',
+                fontWeight: 500,
               }}
             >
               50+
@@ -153,7 +150,8 @@ export default function TrustedByProfessionals() {
                 background: 'linear-gradient(180deg, #DAA03F 0%, #994F0C 100%)',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
+                WebkitTextFillColor: 'transparent',
+                fontWeight: 500,
               }}
             >
               10,000+
@@ -171,7 +169,9 @@ export default function TrustedByProfessionals() {
                 background: 'linear-gradient(180deg, #DAA03F 0%, #994F0C 100%)',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
+                WebkitTextFillColor: 'transparent',
+                fontWeight: 500,
+                fontSize: '64px',
               }}
             >
               4.9/5

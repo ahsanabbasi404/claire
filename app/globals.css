@@ -4,32 +4,33 @@
 /* Note: The ':☞' in CooperLtBT-Regular:☞ is a Figma-specific notation. 
    Use 'CooperLtBT-Regular' as the font-family name. */
 
-   @font-face {
-    font-family: 'Saans_TRIAL';
-    src: url('/fonts/Saans_TRIAL-Medium.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
 @font-face {
-  font-family: 'CooperLtBT-Regular';
-  src: url('/fonts/CooperLtBT-Regular.woff2') format('woff2'),
-       url('/fonts/CooperLtBT-Regular.woff') format('woff'),
-       url('/fonts/CooperLtBT-Regular.ttf') format('truetype');
+  font-family: 'Saans_TRIAL';
+  src: url('/fonts/Saans_TRIAL-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-/* @font-face {
-  font-family: 'Saans_TRIAL';
-  src: url('/fonts/Saans_TRIAL-Regular.woff2') format('woff2'),
-       url('/fonts/Saans_TRIAL-Regular.woff') format('woff'),
-       url('/fonts/Saans_TRIAL-Regular.ttf') format('truetype');
+@font-face {
+  font-family: 'CooperLtBT-Regular';
+  src: url('/fonts/CooperLtBT-Regular.woff2') format('woff2'),
+    url('/fonts/CooperLtBT-Regular.woff') format('woff'),
+    url('/fonts/CooperLtBT-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-} */
+}
+
+@font-face {
+  font-family: 'Saans_TRIAL';
+  src: url('/fonts/Saans_TRIAL-Medium.woff2') format('woff2'),
+       url('/fonts/Saans_TRIAL-Medium.woff') format('woff'),
+       url('/fonts/Saans_TRIAL-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
 
 
@@ -63,7 +64,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   overflow-x: hidden;
   overflow-y: auto;
   width: 100%;
@@ -75,6 +76,11 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+p {
+  font-family: 'Saans_TRIAL', sans-serif;
+  font-weight: 400;
 }
 
 #__next,
@@ -99,6 +105,7 @@ body {
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
